@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9B91419E191AA26700D30448 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B91419D191AA26700D30448 /* Foundation.framework */; };
+		9B9141A0191AA26700D30448 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B91419F191AA26700D30448 /* CoreGraphics.framework */; };
+		9B9141A2191AA26700D30448 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9141A1191AA26700D30448 /* UIKit.framework */; };
+		9B9141A8191AA26700D30448 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141A6191AA26700D30448 /* InfoPlist.strings */; };
+		9B9141AA191AA26700D30448 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141A9191AA26700D30448 /* main.m */; };
+		9B9141AE191AA26700D30448 /* CFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141AD191AA26700D30448 /* CFAppDelegate.m */; };
+		9B9141B1191AA26700D30448 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141AF191AA26700D30448 /* Main_iPhone.storyboard */; };
+		9B9141B4191AA26700D30448 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141B2191AA26700D30448 /* Main_iPad.storyboard */; };
+		9B9141B7191AA26700D30448 /* CFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141B6191AA26700D30448 /* CFViewController.m */; };
+		9B9141B9191AA26700D30448 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141B8191AA26700D30448 /* Images.xcassets */; };
+		9B9141C0191AA26700D30448 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9141BF191AA26700D30448 /* XCTest.framework */; };
+		9B9141C1191AA26700D30448 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B91419D191AA26700D30448 /* Foundation.framework */; };
+		9B9141C2191AA26700D30448 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9141A1191AA26700D30448 /* UIKit.framework */; };
+		9B9141CA191AA26700D30448 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141C8191AA26700D30448 /* InfoPlist.strings */; };
+		9B9141CC191AA26700D30448 /* CO2_FootprintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141CB191AA26700D30448 /* CO2_FootprintTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9B9141C3191AA26700D30448 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B914192191AA26700D30448 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B914199191AA26700D30448;
+			remoteInfo = "CO2 Footprint";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9B91419A191AA26700D30448 /* CO2 Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CO2 Footprint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B91419D191AA26700D30448 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9B91419F191AA26700D30448 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9B9141A1191AA26700D30448 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9B9141A5191AA26700D30448 /* CO2 Footprint-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CO2 Footprint-Info.plist"; sourceTree = "<group>"; };
+		9B9141A7191AA26700D30448 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9B9141A9191AA26700D30448 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9B9141AB191AA26700D30448 /* CO2 Footprint-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CO2 Footprint-Prefix.pch"; sourceTree = "<group>"; };
+		9B9141AC191AA26700D30448 /* CFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFAppDelegate.h; sourceTree = "<group>"; };
+		9B9141AD191AA26700D30448 /* CFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFAppDelegate.m; sourceTree = "<group>"; };
+		9B9141B0191AA26700D30448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		9B9141B3191AA26700D30448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		9B9141B5191AA26700D30448 /* CFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFViewController.h; sourceTree = "<group>"; };
+		9B9141B6191AA26700D30448 /* CFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFViewController.m; sourceTree = "<group>"; };
+		9B9141B8191AA26700D30448 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9B9141BE191AA26700D30448 /* CO2 FootprintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CO2 FootprintTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B9141BF191AA26700D30448 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9B9141C7191AA26700D30448 /* CO2 FootprintTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CO2 FootprintTests-Info.plist"; sourceTree = "<group>"; };
+		9B9141C9191AA26700D30448 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9B9141CB191AA26700D30448 /* CO2_FootprintTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CO2_FootprintTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9B914197191AA26700D30448 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B9141A0191AA26700D30448 /* CoreGraphics.framework in Frameworks */,
+				9B9141A2191AA26700D30448 /* UIKit.framework in Frameworks */,
+				9B91419E191AA26700D30448 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B9141BB191AA26700D30448 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B9141C0191AA26700D30448 /* XCTest.framework in Frameworks */,
+				9B9141C2191AA26700D30448 /* UIKit.framework in Frameworks */,
+				9B9141C1191AA26700D30448 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9B914191191AA26700D30448 = {
+			isa = PBXGroup;
+			children = (
+				9B9141A3191AA26700D30448 /* CO2 Footprint */,
+				9B9141C5191AA26700D30448 /* CO2 FootprintTests */,
+				9B91419C191AA26700D30448 /* Frameworks */,
+				9B91419B191AA26700D30448 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9B91419B191AA26700D30448 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B91419A191AA26700D30448 /* CO2 Footprint.app */,
+				9B9141BE191AA26700D30448 /* CO2 FootprintTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B91419C191AA26700D30448 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B91419D191AA26700D30448 /* Foundation.framework */,
+				9B91419F191AA26700D30448 /* CoreGraphics.framework */,
+				9B9141A1191AA26700D30448 /* UIKit.framework */,
+				9B9141BF191AA26700D30448 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9B9141A3191AA26700D30448 /* CO2 Footprint */ = {
+			isa = PBXGroup;
+			children = (
+				9B9141AC191AA26700D30448 /* CFAppDelegate.h */,
+				9B9141AD191AA26700D30448 /* CFAppDelegate.m */,
+				9B9141AF191AA26700D30448 /* Main_iPhone.storyboard */,
+				9B9141B2191AA26700D30448 /* Main_iPad.storyboard */,
+				9B9141B5191AA26700D30448 /* CFViewController.h */,
+				9B9141B6191AA26700D30448 /* CFViewController.m */,
+				9B9141B8191AA26700D30448 /* Images.xcassets */,
+				9B9141A4191AA26700D30448 /* Supporting Files */,
+			);
+			path = "CO2 Footprint";
+			sourceTree = "<group>";
+		};
+		9B9141A4191AA26700D30448 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B9141A5191AA26700D30448 /* CO2 Footprint-Info.plist */,
+				9B9141A6191AA26700D30448 /* InfoPlist.strings */,
+				9B9141A9191AA26700D30448 /* main.m */,
+				9B9141AB191AA26700D30448 /* CO2 Footprint-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9B9141C5191AA26700D30448 /* CO2 FootprintTests */ = {
+			isa = PBXGroup;
+			children = (
+				9B9141CB191AA26700D30448 /* CO2_FootprintTests.m */,
+				9B9141C6191AA26700D30448 /* Supporting Files */,
+			);
+			path = "CO2 FootprintTests";
+			sourceTree = "<group>";
+		};
+		9B9141C6191AA26700D30448 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B9141C7191AA26700D30448 /* CO2 FootprintTests-Info.plist */,
+				9B9141C8191AA26700D30448 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9B914199191AA26700D30448 /* CO2 Footprint */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B9141CF191AA26700D30448 /* Build configuration list for PBXNativeTarget "CO2 Footprint" */;
+			buildPhases = (
+				9B914196191AA26700D30448 /* Sources */,
+				9B914197191AA26700D30448 /* Frameworks */,
+				9B914198191AA26700D30448 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CO2 Footprint";
+			productName = "CO2 Footprint";
+			productReference = 9B91419A191AA26700D30448 /* CO2 Footprint.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9B9141BD191AA26700D30448 /* CO2 FootprintTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B9141D2191AA26700D30448 /* Build configuration list for PBXNativeTarget "CO2 FootprintTests" */;
+			buildPhases = (
+				9B9141BA191AA26700D30448 /* Sources */,
+				9B9141BB191AA26700D30448 /* Frameworks */,
+				9B9141BC191AA26700D30448 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9B9141C4191AA26700D30448 /* PBXTargetDependency */,
+			);
+			name = "CO2 FootprintTests";
+			productName = "CO2 FootprintTests";
+			productReference = 9B9141BE191AA26700D30448 /* CO2 FootprintTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9B914192191AA26700D30448 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CF;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Ship Shape";
+				TargetAttributes = {
+					9B9141BD191AA26700D30448 = {
+						TestTargetID = 9B914199191AA26700D30448;
+					};
+				};
+			};
+			buildConfigurationList = 9B914195191AA26700D30448 /* Build configuration list for PBXProject "CO2 Footprint" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9B914191191AA26700D30448;
+			productRefGroup = 9B91419B191AA26700D30448 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9B914199191AA26700D30448 /* CO2 Footprint */,
+				9B9141BD191AA26700D30448 /* CO2 FootprintTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9B914198191AA26700D30448 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B9141B4191AA26700D30448 /* Main_iPad.storyboard in Resources */,
+				9B9141B9191AA26700D30448 /* Images.xcassets in Resources */,
+				9B9141B1191AA26700D30448 /* Main_iPhone.storyboard in Resources */,
+				9B9141A8191AA26700D30448 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B9141BC191AA26700D30448 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B9141CA191AA26700D30448 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9B914196191AA26700D30448 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B9141AA191AA26700D30448 /* main.m in Sources */,
+				9B9141AE191AA26700D30448 /* CFAppDelegate.m in Sources */,
+				9B9141B7191AA26700D30448 /* CFViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B9141BA191AA26700D30448 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B9141CC191AA26700D30448 /* CO2_FootprintTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9B9141C4191AA26700D30448 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9B914199191AA26700D30448 /* CO2 Footprint */;
+			targetProxy = 9B9141C3191AA26700D30448 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9B9141A6191AA26700D30448 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B9141A7191AA26700D30448 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9B9141AF191AA26700D30448 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B9141B0191AA26700D30448 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		9B9141B2191AA26700D30448 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B9141B3191AA26700D30448 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		9B9141C8191AA26700D30448 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B9141C9191AA26700D30448 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9B9141CD191AA26700D30448 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9B9141CE191AA26700D30448 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9B9141D0191AA26700D30448 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CO2 Footprint/CO2 Footprint-Prefix.pch";
+				INFOPLIST_FILE = "CO2 Footprint/CO2 Footprint-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9B9141D1191AA26700D30448 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CO2 Footprint/CO2 Footprint-Prefix.pch";
+				INFOPLIST_FILE = "CO2 Footprint/CO2 Footprint-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9B9141D3191AA26700D30448 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CO2 Footprint.app/CO2 Footprint";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CO2 Footprint/CO2 Footprint-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CO2 FootprintTests/CO2 FootprintTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9B9141D4191AA26700D30448 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CO2 Footprint.app/CO2 Footprint";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CO2 Footprint/CO2 Footprint-Prefix.pch";
+				INFOPLIST_FILE = "CO2 FootprintTests/CO2 FootprintTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9B914195191AA26700D30448 /* Build configuration list for PBXProject "CO2 Footprint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B9141CD191AA26700D30448 /* Debug */,
+				9B9141CE191AA26700D30448 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B9141CF191AA26700D30448 /* Build configuration list for PBXNativeTarget "CO2 Footprint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B9141D0191AA26700D30448 /* Debug */,
+				9B9141D1191AA26700D30448 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9B9141D2191AA26700D30448 /* Build configuration list for PBXNativeTarget "CO2 FootprintTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B9141D3191AA26700D30448 /* Debug */,
+				9B9141D4191AA26700D30448 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9B914192191AA26700D30448 /* Project object */;
+}
