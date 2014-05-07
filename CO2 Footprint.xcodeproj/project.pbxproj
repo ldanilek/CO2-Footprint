@@ -22,6 +22,8 @@
 		9B9141C2191AA26700D30448 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9141A1191AA26700D30448 /* UIKit.framework */; };
 		9B9141CA191AA26700D30448 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141C8191AA26700D30448 /* InfoPlist.strings */; };
 		9B9141CC191AA26700D30448 /* CO2_FootprintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141CB191AA26700D30448 /* CO2_FootprintTests.m */; };
+		9B9141D6191AA7CC00D30448 /* FunctionalSpecs.md in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141D5191AA7CC00D30448 /* FunctionalSpecs.md */; };
+		9B9141D8191AA7D700D30448 /* DesignSpecs.md in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141D7191AA7D700D30448 /* DesignSpecs.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		9B9141C7191AA26700D30448 /* CO2 FootprintTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CO2 FootprintTests-Info.plist"; sourceTree = "<group>"; };
 		9B9141C9191AA26700D30448 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9B9141CB191AA26700D30448 /* CO2_FootprintTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CO2_FootprintTests.m; sourceTree = "<group>"; };
+		9B9141D5191AA7CC00D30448 /* FunctionalSpecs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FunctionalSpecs.md; sourceTree = "<group>"; };
+		9B9141D7191AA7D700D30448 /* DesignSpecs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DesignSpecs.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,8 @@
 				9B9141B2191AA26700D30448 /* Main_iPad.storyboard */,
 				9B9141B5191AA26700D30448 /* CFViewController.h */,
 				9B9141B6191AA26700D30448 /* CFViewController.m */,
+				9B9141D5191AA7CC00D30448 /* FunctionalSpecs.md */,
+				9B9141D7191AA7D700D30448 /* DesignSpecs.md */,
 				9B9141B8191AA26700D30448 /* Images.xcassets */,
 				9B9141A4191AA26700D30448 /* Supporting Files */,
 			);
@@ -234,8 +240,10 @@
 			files = (
 				9B9141B4191AA26700D30448 /* Main_iPad.storyboard in Resources */,
 				9B9141B9191AA26700D30448 /* Images.xcassets in Resources */,
+				9B9141D6191AA7CC00D30448 /* FunctionalSpecs.md in Resources */,
 				9B9141B1191AA26700D30448 /* Main_iPhone.storyboard in Resources */,
 				9B9141A8191AA26700D30448 /* InfoPlist.strings in Resources */,
+				9B9141D8191AA7D700D30448 /* DesignSpecs.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
