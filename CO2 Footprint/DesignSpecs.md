@@ -16,3 +16,5 @@
 * FootprintBrain stores an array of Activity objects, sorted by their individual footprints
     * footprint is calculated as a sum of the footprints of each activity
 * Each Activity has a type which defines the way it is edited (editing can change everything but type)
+* Even if units are changed, all values *stored* will be in some combination of weeks, gallons, miles, etc.
+    * From these units I would convert to the input/output units.

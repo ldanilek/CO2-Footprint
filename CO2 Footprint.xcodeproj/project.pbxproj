@@ -24,6 +24,10 @@
 		9B9141CC191AA26700D30448 /* CO2_FootprintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141CB191AA26700D30448 /* CO2_FootprintTests.m */; };
 		9B9141D6191AA7CC00D30448 /* FunctionalSpecs.md in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141D5191AA7CC00D30448 /* FunctionalSpecs.md */; };
 		9B9141D8191AA7D700D30448 /* DesignSpecs.md in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141D7191AA7D700D30448 /* DesignSpecs.md */; };
+		9B9141DA191AE56A00D30448 /* testSpecs.md in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141D9191AE56A00D30448 /* testSpecs.md */; };
+		9B9141DE191AE65400D30448 /* CFFootprintBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141DD191AE65400D30448 /* CFFootprintBrain.m */; };
+		9B9141E1191AE8B900D30448 /* CFActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141E0191AE8B900D30448 /* CFActivity.m */; };
+		9B9141E2191AE8B900D30448 /* CFActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141E0191AE8B900D30448 /* CFActivity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,11 @@
 		9B9141CB191AA26700D30448 /* CO2_FootprintTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CO2_FootprintTests.m; sourceTree = "<group>"; };
 		9B9141D5191AA7CC00D30448 /* FunctionalSpecs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FunctionalSpecs.md; sourceTree = "<group>"; };
 		9B9141D7191AA7D700D30448 /* DesignSpecs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DesignSpecs.md; sourceTree = "<group>"; };
+		9B9141D9191AE56A00D30448 /* testSpecs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testSpecs.md; sourceTree = "<group>"; };
+		9B9141DC191AE65400D30448 /* CFFootprintBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFFootprintBrain.h; sourceTree = "<group>"; };
+		9B9141DD191AE65400D30448 /* CFFootprintBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFFootprintBrain.m; sourceTree = "<group>"; };
+		9B9141DF191AE8B900D30448 /* CFActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFActivity.h; sourceTree = "<group>"; };
+		9B9141E0191AE8B900D30448 /* CFActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFActivity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +133,10 @@
 				9B9141B2191AA26700D30448 /* Main_iPad.storyboard */,
 				9B9141B5191AA26700D30448 /* CFViewController.h */,
 				9B9141B6191AA26700D30448 /* CFViewController.m */,
+				9B9141DB191AE63A00D30448 /* Model */,
 				9B9141D5191AA7CC00D30448 /* FunctionalSpecs.md */,
 				9B9141D7191AA7D700D30448 /* DesignSpecs.md */,
+				9B9141D9191AE56A00D30448 /* testSpecs.md */,
 				9B9141B8191AA26700D30448 /* Images.xcassets */,
 				9B9141A4191AA26700D30448 /* Supporting Files */,
 			);
@@ -159,6 +170,17 @@
 				9B9141C8191AA26700D30448 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9B9141DB191AE63A00D30448 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B9141DC191AE65400D30448 /* CFFootprintBrain.h */,
+				9B9141DD191AE65400D30448 /* CFFootprintBrain.m */,
+				9B9141DF191AE8B900D30448 /* CFActivity.h */,
+				9B9141E0191AE8B900D30448 /* CFActivity.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +264,7 @@
 				9B9141B9191AA26700D30448 /* Images.xcassets in Resources */,
 				9B9141D6191AA7CC00D30448 /* FunctionalSpecs.md in Resources */,
 				9B9141B1191AA26700D30448 /* Main_iPhone.storyboard in Resources */,
+				9B9141DA191AE56A00D30448 /* testSpecs.md in Resources */,
 				9B9141A8191AA26700D30448 /* InfoPlist.strings in Resources */,
 				9B9141D8191AA7D700D30448 /* DesignSpecs.md in Resources */,
 			);
@@ -264,7 +287,9 @@
 			files = (
 				9B9141AA191AA26700D30448 /* main.m in Sources */,
 				9B9141AE191AA26700D30448 /* CFAppDelegate.m in Sources */,
+				9B9141E1191AE8B900D30448 /* CFActivity.m in Sources */,
 				9B9141B7191AA26700D30448 /* CFViewController.m in Sources */,
+				9B9141DE191AE65400D30448 /* CFFootprintBrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B9141CC191AA26700D30448 /* CO2_FootprintTests.m in Sources */,
+				9B9141E2191AE8B900D30448 /* CFActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

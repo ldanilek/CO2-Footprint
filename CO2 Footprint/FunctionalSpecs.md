@@ -7,6 +7,8 @@
     * Carbon footprint, with link to carbon footprint output
     * Add new activity, with link to create an activity
     * List of already inputted activities
+* Settings button in navigation controller leads to settings page
+* On settings page, change units of time, volume, distance, etc.
 * Activities are stored between app launches
 * Activities will be represented as average usage for one week
 
@@ -15,9 +17,9 @@
     * A choice of activity types is available, with accompanying graphics
     * Activity types include:
         * Transportation
-        * Hygene
+        * Hygiene
         * Working
-        * Eating
+        * Surviving
     * Activities will also include appliances the user is responsible for, even if s/he doesn't actively use them
         * For example, user is responsible for refrigerator, heating, and lighting
 * Existing activities (including newly created ones) can be edited, changing activities within their type
@@ -31,7 +33,7 @@
     * Efficiency of machine/appliance used
         * For transportation, input miles per gallon of vehicle
         * If no input, efficiency will be estimated
-    * Average usage per day
+    * Average usage per week
         * For transportation, this would be the distance travelled
         * For most other activities, this would be the time spent doing the activity
 
