@@ -15,6 +15,8 @@
 @property (nonatomic, strong) CFFootprintBrain *brain;
 @property (nonatomic, strong) NSArray *tableViews;//could be one table view. use mostly for reloading
 
+@property (nonatomic, strong) UIPopoverController *popover;
+
 @end
 
 @implementation CFViewController
@@ -37,6 +39,19 @@
         return 1;
     } else {
         return typeCount();
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    ActivityType type = [self multipleTables] ? tableView.tag : indexPath.section;
+    return indexPath.row!=[self.brain activityCountOfType:type];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle==UITableViewCellEditingStyleDelete) {
+        ActivityType type = [self multipleTables] ? tableView.tag : indexPath.section;
+        [self.brain deleteActivityAtIndex:indexPath.row withType:type];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
@@ -80,16 +95,27 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ActivityType type = [self multipleTables] ? tableView.tag : indexPath.section;
     if (indexPath.row==[self.brain activityCountOfType:type]) {
-        [self editActivity:[self.brain newActivityWithType:type]];
+        CFActivity *newActivity = [self.brain newActivityWithType:type];
+        [[NSNotificationCenter defaultCenter] postNotificationName:FOOTPRINT_CHANGED_NOTIFICATION object:nil];
+        [self editActivity:newActivity tableView:tableView indexPath:indexPath];
     } else {
-        [self editActivity:[self.brain activityAtIndex:indexPath.row withType:type]];
+        [self editActivity:[self.brain activityAtIndex:indexPath.row withType:type] tableView:tableView indexPath:indexPath];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 //moves to a new view controller to edit.
-- (void)editActivity:(CFActivity *)activity {
-    [self performSegueWithIdentifier:@"Edit Activity" sender:activity];
+//if in iPad, present from popover from cell
+- (void)editActivity:(CFActivity *)activity tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+    if ([self multipleTables]) {
+        CFActivityEditViewController *editor = [[self storyboard] instantiateViewControllerWithIdentifier:@"Edit Activity"];
+        editor.activity=activity;
+        self.popover = [[UIPopoverController alloc] initWithContentViewController:editor];
+        CGRect rect = [tableView cellForRowAtIndexPath:indexPath].frame;
+        [self.popover presentPopoverFromRect:rect inView:tableView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    } else {
+        [self performSegueWithIdentifier:@"Edit Activity" sender:activity];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -141,7 +167,12 @@
         [self.view addSubview:table];
         self.tableViews=@[table];
     }
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    //respond to notifications
+    [[NSNotificationCenter defaultCenter] addObserverForName:FOOTPRINT_CHANGED_NOTIFICATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:self.brain] forKey:FOOTPRINT_BRAIN_STORAGE_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
 }
 
 - (void)didReceiveMemoryWarning

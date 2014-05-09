@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B1E2CBE191D768800E2AB14 /* CFActivityEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E2CBD191D768800E2AB14 /* CFActivityEditViewController.m */; };
-		9B1E2CBF191D768800E2AB14 /* CFActivityEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E2CBD191D768800E2AB14 /* CFActivityEditViewController.m */; };
+		9B1E2CC3191D7D3200E2AB14 /* CFActivityEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E2CC1191D7D3200E2AB14 /* CFActivityEditViewController.m */; };
+		9B1E2CC4191D7D3200E2AB14 /* CFActivityEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E2CC1191D7D3200E2AB14 /* CFActivityEditViewController.m */; };
 		9B91419E191AA26700D30448 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B91419D191AA26700D30448 /* Foundation.framework */; };
 		9B9141A0191AA26700D30448 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B91419F191AA26700D30448 /* CoreGraphics.framework */; };
 		9B9141A2191AA26700D30448 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9141A1191AA26700D30448 /* UIKit.framework */; };
@@ -43,8 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9B1E2CBC191D768800E2AB14 /* CFActivityEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFActivityEditViewController.h; sourceTree = "<group>"; };
-		9B1E2CBD191D768800E2AB14 /* CFActivityEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFActivityEditViewController.m; sourceTree = "<group>"; };
+		9B1E2CC0191D7D3200E2AB14 /* CFActivityEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFActivityEditViewController.h; sourceTree = "<group>"; };
+		9B1E2CC1191D7D3200E2AB14 /* CFActivityEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFActivityEditViewController.m; sourceTree = "<group>"; };
 		9B91419A191AA26700D30448 /* CO2 Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CO2 Footprint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B91419D191AA26700D30448 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9B91419F191AA26700D30448 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -137,8 +137,8 @@
 				9B9141B2191AA26700D30448 /* Main_iPad.storyboard */,
 				9B9141B5191AA26700D30448 /* CFViewController.h */,
 				9B9141B6191AA26700D30448 /* CFViewController.m */,
-				9B1E2CBC191D768800E2AB14 /* CFActivityEditViewController.h */,
-				9B1E2CBD191D768800E2AB14 /* CFActivityEditViewController.m */,
+				9B1E2CC0191D7D3200E2AB14 /* CFActivityEditViewController.h */,
+				9B1E2CC1191D7D3200E2AB14 /* CFActivityEditViewController.m */,
 				9B9141DB191AE63A00D30448 /* Model */,
 				9B9141D5191AA7CC00D30448 /* FunctionalSpecs.md */,
 				9B9141D7191AA7D700D30448 /* DesignSpecs.md */,
@@ -293,7 +293,7 @@
 			files = (
 				9B9141AA191AA26700D30448 /* main.m in Sources */,
 				9B9141AE191AA26700D30448 /* CFAppDelegate.m in Sources */,
-				9B1E2CBE191D768800E2AB14 /* CFActivityEditViewController.m in Sources */,
+				9B1E2CC3191D7D3200E2AB14 /* CFActivityEditViewController.m in Sources */,
 				9B9141E1191AE8B900D30448 /* CFActivity.m in Sources */,
 				9B9141B7191AA26700D30448 /* CFViewController.m in Sources */,
 				9B9141DE191AE65400D30448 /* CFFootprintBrain.m in Sources */,
@@ -306,7 +306,7 @@
 			files = (
 				9B9141CC191AA26700D30448 /* CO2_FootprintTests.m in Sources */,
 				9B9141E2191AE8B900D30448 /* CFActivity.m in Sources */,
-				9B1E2CBF191D768800E2AB14 /* CFActivityEditViewController.m in Sources */,
+				9B1E2CC4191D7D3200E2AB14 /* CFActivityEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

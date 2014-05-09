@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "CFActivity.h"
 
+#define FOOTPRINT_CHANGED_NOTIFICATION @"Note: the footprint has now changed. Store it now."
+
 @interface CFFootprintBrain : NSObject <NSCoding>
 
 //initializing from NSKeyedUnarchiver is encouraged, when possible
@@ -19,6 +21,7 @@
 - (NSUInteger)activityCountOfType:(ActivityType)activityType;
 - (CFActivity *)activityAtIndex:(int)index withType:(ActivityType)activityType;
 - (NSString *)activityDisplayAtIndex:(int)index forType:(ActivityType)activityType;
+- (void)deleteActivityAtIndex:(int)index withType:(ActivityType)activityType;
 
 - (CFActivity *)newActivityWithType:(ActivityType)activityType;//adds activity to carbon footprint and returns it for further editing
 

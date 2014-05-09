@@ -10,6 +10,20 @@
 
 @implementation CFFootprintBrain
 
+- (void)deleteActivityAtIndex:(int)index withType:(ActivityType)activityType {
+    int indexToDelete=self.activities.count;
+    NSUInteger count = 0;
+    for (CFActivity *activity in self.activities) {
+        if (activity.type==activityType) {
+            if (count==index) indexToDelete = index;
+            count++;
+        }
+    }
+    NSArray *before = [self.activities subarrayWithRange:NSMakeRange(0, indexToDelete)];
+    NSArray *after = [self.activities subarrayWithRange:NSMakeRange(indexToDelete+1, self.activities.count-indexToDelete-1)];
+    self.activities=[before arrayByAddingObjectsFromArray:after];
+}
+
 - (NSString *)activityDisplayAtIndex:(int)index forType:(ActivityType)activityType {
     return [[self activityAtIndex:index withType:activityType] display];
 }

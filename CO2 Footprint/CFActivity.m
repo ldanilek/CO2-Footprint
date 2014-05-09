@@ -110,11 +110,11 @@ static BOOL equalObjs(id obj1, id obj2) {
 }
 
 - (NSString *)stringForType {
-    return @"Type placeholder";
+    return stringForType(self.type);
 }
 
 - (NSString *)stringForSubtype {
-    return @"Subtype placeholder";
+    return stringForSubtype(self.type, self.subtype);
 }
 
 static NSUInteger doubleHash(double value) {
