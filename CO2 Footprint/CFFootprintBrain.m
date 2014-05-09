@@ -10,6 +10,29 @@
 
 @implementation CFFootprintBrain
 
+- (NSString *)activityDisplayAtIndex:(int)index forType:(ActivityType)activityType {
+    return [[self activityAtIndex:index withType:activityType] display];
+}
+
+- (CFActivity *)activityAtIndex:(int)index withType:(ActivityType)activityType {
+    NSUInteger count = 0;
+    for (CFActivity *activity in self.activities) {
+        if (activity.type==activityType) {
+            if (count==index) return activity;
+            count++;
+        }
+    }
+    return nil;
+}
+
+- (NSUInteger)activityCountOfType:(ActivityType)activityType {
+    NSUInteger count = 0;
+    for (CFActivity *activity in self.activities) {
+        if (activity.type==activityType) count++;
+    }
+    return count;
+}
+
 - (CFActivity *)newActivityWithType:(ActivityType)activityType {
     CFActivity *newActivity = [[CFActivity alloc] initWithType:activityType];
     self.activities=[self.activities arrayByAddingObject:newActivity];

@@ -16,17 +16,30 @@ typedef enum {
     ActivityLeisure//like TV
 } ActivityType;
 
+#define TYPES_STRING_ARRAY @[@"Transportation",@"Hygiene",@"Work",@"Leisure",@"Surviving"]
+
+static int typeCount() {
+    static int count=0;
+    if (!count) count = [TYPES_STRING_ARRAY count];
+    return count;
+}
+static NSString *stringForType(ActivityType type) {
+    return TYPES_STRING_ARRAY[type];
+}
+
 typedef NSUInteger ActivitySubtype;//subtype is an integer from one of the ACTIVITY_SUBTYPES defined below
 
 @interface CFActivity : NSObject <NSCoding>
 //responds accurately to isEqual: and hash
 //responds to description for debugging
 
+- (NSString *)display;//not for debugging. for display in table view (must be short)
+
 //usually will be initialized from NSKeyedUnarchiver, but when that's not available, call initWithType:, the designated initializer
 - (instancetype)initWithType:(ActivityType)activityType;
 //init throws an exception, because an activity must be created with a type
 
-- (double)footprint;//in tons of CO2 per week
+@property (nonatomic, readonly) double footprint;//in tons of CO2 per week
 
 - (NSString *)stringForType;
 - (NSString *)stringForSubtype;
@@ -77,3 +90,17 @@ typedef enum {
     SurvivingDrink,
 } SurvivingType;
 
+typedef enum {
+    LeisureTV,
+} LeisureType;
+
+//when subtypes or types are edited, this must be edited as well
+#define SUBTYPES_STRING_ARRAY @[@[@"Plane",@"Car",@"Truck",@"Bus"], @[@"Bath", @"Shower",@"Brush Teeth", @"Wash Clothes", @"Dry Clothes",@"Wash Hands",@"Dishwasher",@"Vacuum"], @[@"Lights",@"Computer"], @[@"Heat",@"Air Conditioning",@"Food",@"Drink"],@[@"TV"]]
+
+static int subtypeCount(ActivityType type) {
+    return [SUBTYPES_STRING_ARRAY[type] count];
+}
+
+static NSString *stringForSubtype(ActivityType type, ActivitySubtype subtype) {
+    return SUBTYPES_STRING_ARRAY[type][subtype];
+}

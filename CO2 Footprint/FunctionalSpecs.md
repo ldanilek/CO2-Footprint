@@ -11,6 +11,7 @@
 * On settings page, change units of time, volume, distance, etc.
 * Activities are stored between app launches
 * Activities will be represented as average usage for one week
+* Multiple users for multiple footprints
 
 ##Activities Input
 * New activities can be created

@@ -10,6 +10,20 @@
 
 @implementation CFActivity
 
+- (double)sharingCount {
+    if (!_sharingCount) {
+        _sharingCount=1;
+    }
+    return _sharingCount;
+}
+
+- (double)efficiency {
+    if (!_efficiency) {
+        _efficiency=1;
+    }
+    return _efficiency;
+}
+
 //the entire goal of this object is to be able to calculate the footprint of an activity
 //this method is very important
 //returns tons of carbon per week per person
@@ -123,6 +137,10 @@ static NSUInteger doubleHash(double value) {
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"Activity type:%@, subtype:%@, title:%@, brand:%@, model:%@, efficiency:%g, usage:%g, shared:%g", self.stringForType, self.stringForSubtype, self.title, self.brand, self.model, self.efficiency, self.usage, self.sharingCount];
+}
+
+- (NSString *)display {
+    return [NSString stringWithFormat:@"%@, footprint:%g", self.title, self.footprint];
 }
 
 //designated initializer. must set type and not change it, so activity knows how to interpret its other attributes
