@@ -9,7 +9,7 @@
 #import "CFActivityEditViewController.h"
 #import "CFFootprintBrain.h"
 
-@interface CFActivityEditViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface CFActivityEditViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
 @end
 
@@ -36,24 +36,48 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:FOOTPRINT_CHANGED_NOTIFICATION object:nil];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.picker selectRow:self.activity.subtype inComponent:0 animated:NO];
+    self.usageLabel.text=[NSString stringWithFormat:@"%g", self.activity.usage];
+    self.shareLabel.text=[NSString stringWithFormat:@"%g", self.activity.sharingCount];
+    self.usageSlider.value=log(self.activity.usage)*100;
+    self.shareStepper.value=self.activity.sharingCount;
+    self.titleField.text=self.activity.title;
+}
+
+- (void)usageChanged:(UISlider *)sender {
+    self.activity.usage=exp(sender.value/100);
+    self.usageLabel.text=[NSString stringWithFormat:@"%g", self.activity.usage];
+    [self commitEdit];
+}
+
+- (void)shareChanged:(UIStepper *)share {
+    self.activity.sharingCount=share.value;
+    self.shareLabel.text=[NSString stringWithFormat:@"%g", self.activity.sharingCount];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self.usageSlider addTarget:self action:@selector(usageChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.shareStepper addTarget:self action:@selector(shareChanged:) forControlEvents:UIControlEventValueChanged];
+    [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:self.titleField queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+        self.activity.title=self.titleField.text;
+    }];
+    self.titleField.delegate=self;
+    self.titleField.returnKeyType=UIReturnKeyDone;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    return YES;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [textField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning

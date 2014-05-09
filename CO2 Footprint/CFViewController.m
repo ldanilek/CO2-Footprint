@@ -52,6 +52,7 @@
         ActivityType type = [self multipleTables] ? tableView.tag : indexPath.section;
         [self.brain deleteActivityAtIndex:indexPath.row withType:type];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [[NSNotificationCenter defaultCenter] postNotificationName:FOOTPRINT_CHANGED_NOTIFICATION object:nil];
     }
 }
 

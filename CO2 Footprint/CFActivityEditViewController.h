@@ -15,5 +15,10 @@
 @property (strong, atomic) CFActivity *activity;
 
 @property (nonatomic, weak) IBOutlet UIPickerView *picker;
+@property (nonatomic, weak) IBOutlet UITextField *titleField;
+@property (nonatomic, weak) IBOutlet UILabel *shareLabel;
+@property (nonatomic, weak) IBOutlet UIStepper *shareStepper;
+@property (nonatomic, weak) IBOutlet UISlider *usageSlider;
+@property (nonatomic, weak) IBOutlet UILabel *usageLabel;
 
 @end
