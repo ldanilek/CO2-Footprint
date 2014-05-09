@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "CFActivity.h"
 
 @interface CO2_FootprintTests : XCTestCase
 
@@ -26,9 +27,34 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+#pragma mark - Test Activities
+
+- (void)testActivityCreation {
+    CFActivity *activity = [[CFActivity alloc] initWithType:ActivityTransportation];
+    XCTAssertNotNil(activity, @"activity should not be nil");
+    XCTAssertEqual(activity.type, ActivityTransportation, @"type is set on init");
 }
+
+//also checks activity editing and comparison
+- (void)testActivityStorage {
+    CFActivity *activity = [[CFActivity alloc] initWithType:ActivityTransportation];
+    activity.title=@"Daily Commute";
+    activity.subtype=TransportationCar;
+    activity.brand=@"Honda";
+    activity.model=@"Pilot";
+    activity.efficiency=20;
+    activity.usage=50;
+    activity.sharingCount=2;
+    
+    NSData *archive = [NSKeyedArchiver archivedDataWithRootObject:activity];
+    CFActivity *resurected = [NSKeyedUnarchiver unarchiveObjectWithData:archive];
+    
+    XCTAssertNotNil(resurected, @"accessed activity should exist");
+    XCTAssertEqual(resurected.type, activity.type, @"accessed activity should retain type");
+    XCTAssertEqualObjects(activity, resurected, @"activity and resurected activity should be the same");//this also checks isEqual:
+    XCTAssertNoThrow(NSLog(@"Activity has been recreated:\n%@", activity), @"Check description");
+}
+
+#pragma mark - Test Specific Footprints
 
 @end

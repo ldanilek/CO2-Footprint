@@ -19,12 +19,17 @@ typedef enum {
 typedef NSUInteger ActivitySubtype;//subtype is an integer from one of the ACTIVITY_SUBTYPES defined below
 
 @interface CFActivity : NSObject <NSCoding>
+//responds accurately to isEqual: and hash
+//responds to description for debugging
 
 //usually will be initialized from NSKeyedUnarchiver, but when that's not available, call initWithType:, the designated initializer
 - (instancetype)initWithType:(ActivityType)activityType;
 //init throws an exception, because an activity must be created with a type
 
 - (double)footprint;//in tons of CO2 per week
+
+- (NSString *)stringForType;
+- (NSString *)stringForSubtype;
 
 //for storage
 @property (nonatomic, readonly) ActivityType type;

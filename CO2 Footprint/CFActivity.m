@@ -86,6 +86,45 @@
     return self;
 }
 
+//if both are nil, isEqual: will return NO. It shouldn't.
+static BOOL equalObjs(id obj1, id obj2) {
+    return obj1==obj2 || [obj1 isEqual:obj2];
+}
+
+- (BOOL)isEqual:(CFActivity *)object {
+    return self==object||([NSStringFromClass(object.class) isEqualToString:NSStringFromClass(self.class)] && equalObjs(object.brand, self.brand) && equalObjs(object.model,self.model) && equalObjs(object.title,self.title) && object.sharingCount==self.sharingCount && object.efficiency==self.efficiency && object.usage==self.usage && object.type==self.type && object.subtype==self.subtype);
+}
+
+- (NSString *)stringForType {
+    return @"Type placeholder";
+}
+
+- (NSString *)stringForSubtype {
+    return @"Subtype placeholder";
+}
+
+static NSUInteger doubleHash(double value) {
+    return *(NSUInteger *)&value;
+}
+
+- (NSUInteger)hash {
+    NSUInteger prime = 31;
+    NSUInteger result= 1;
+    result+=prime*result + self.brand.hash;
+    result+=prime*result + self.model.hash;
+    result+=prime*result + self.title.hash;
+    result+=prime*result + doubleHash(self.efficiency);
+    result+=prime*result + doubleHash(self.usage);
+    result+=prime*result + doubleHash(self.sharingCount);
+    result+=prime*result + self.subtype;
+    result+=prime*result + self.type;
+    return result;
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"Activity type:%@, subtype:%@, title:%@, brand:%@, model:%@, efficiency:%g, usage:%g, shared:%g", self.stringForType, self.stringForSubtype, self.title, self.brand, self.model, self.efficiency, self.usage, self.sharingCount];
+}
+
 //designated initializer. must set type and not change it, so activity knows how to interpret its other attributes
 - (instancetype)initWithType:(ActivityType)activityType {
     if (self=[super init]) {
@@ -95,7 +134,7 @@
 }
 
 - (instancetype)init {
-    [NSException raise:@"init not available" format:@"The initializer init is unavailable for CFActivity, as it must be initialized with a type"];
+    [NSException raise:@"init not available" format:@"init is unavailable for CFActivity, as it must be initialized with a type"];
     return nil;
 }
 
