@@ -13,11 +13,13 @@
 - (void)deleteActivityAtIndex:(int)index withType:(ActivityType)activityType {
     int indexToDelete=self.activities.count;
     NSUInteger count = 0;
+    int indexChecking = 0;
     for (CFActivity *activity in self.activities) {
         if (activity.type==activityType) {
-            if (count==index) indexToDelete = index;
+            if (count==index) indexToDelete = indexChecking;
             count++;
         }
+        indexChecking++;
     }
     NSArray *before = [self.activities subarrayWithRange:NSMakeRange(0, indexToDelete)];
     NSArray *after = [self.activities subarrayWithRange:NSMakeRange(indexToDelete+1, self.activities.count-indexToDelete-1)];

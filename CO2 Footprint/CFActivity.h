@@ -16,7 +16,7 @@ typedef enum {
     ActivityLeisure//like TV
 } ActivityType;
 
-#define TYPES_STRING_ARRAY @[@"Transportation",@"Hygiene",@"Work",@"Leisure",@"Surviving"]
+#define TYPES_STRING_ARRAY @[@"Transportation",@"Hygiene",@"Work",@"Surviving",@"Leisure"]
 
 static int typeCount() {
     static int count=0;

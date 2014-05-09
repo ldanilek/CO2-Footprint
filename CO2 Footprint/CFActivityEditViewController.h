@@ -14,4 +14,6 @@
 //set this before goes onscreen
 @property (strong, atomic) CFActivity *activity;
 
+@property (nonatomic, weak) IBOutlet UIPickerView *picker;
+
 @end

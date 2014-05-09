@@ -140,7 +140,7 @@ static NSUInteger doubleHash(double value) {
 }
 
 - (NSString *)display {
-    return [NSString stringWithFormat:@"%@, footprint:%g", self.title, self.footprint];
+    return [NSString stringWithFormat:@"%@ (%@) F:%g", self.title, [self stringForSubtype], self.footprint];
 }
 
 //designated initializer. must set type and not change it, so activity knows how to interpret its other attributes
