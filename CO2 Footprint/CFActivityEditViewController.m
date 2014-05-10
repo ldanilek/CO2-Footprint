@@ -16,6 +16,7 @@
 
 @implementation CFActivityEditViewController
 
+//only call this from phone. iPad can deal on its own, with a popover segue
 - (IBAction)editUnit:(id)sender {
     [self performSegueWithIdentifier:@"Pick Unit" sender:sender];
 }
@@ -113,6 +114,8 @@
     self.titleField.delegate=self;
     self.titleField.returnKeyType=UIReturnKeyDone;
     self.titleField.clearButtonMode=UITextFieldViewModeAlways;
+    self.picker.delegate=self;
+    self.picker.dataSource=self;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

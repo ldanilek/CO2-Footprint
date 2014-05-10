@@ -10,7 +10,7 @@
 #import "CFFootprintBrain.h"
 #import "CFActivityEditViewController.h"
 
-@interface CFViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CFViewController () <UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) CFFootprintBrain *brain;
 @property (nonatomic, strong) NSArray *tableViews;//could be one table view. use mostly for reloading
@@ -105,6 +105,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    self.popover=nil;
+    for (UITableView *tableView in self.tableViews) {
+        [tableView reloadData];
+    }
+}
+
 //moves to a new view controller to edit.
 //if in iPad, present from popover from cell
 - (void)editActivity:(CFActivity *)activity tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
@@ -114,6 +121,7 @@
         self.popover = [[UIPopoverController alloc] initWithContentViewController:editor];
         CGRect rect = [tableView cellForRowAtIndexPath:indexPath].frame;
         [self.popover presentPopoverFromRect:rect inView:tableView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        self.popover.delegate=self;
     } else {
         [self performSegueWithIdentifier:@"Edit Activity" sender:activity];
     }

@@ -119,7 +119,7 @@
         if (self.type==ActivityTransportation) {
             _units=[@[@"mi",@"yr",@"mi",@"gal"] mutableCopy];
         } else {
-            _units=[@[@"hr",@"wk",@"h",@"J"] mutableCopy];
+            _units=[@[@"hr",@"wk",@"hr",@"J"] mutableCopy];
         }
     }
     return _units;
