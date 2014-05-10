@@ -55,6 +55,17 @@
     XCTAssertNoThrow(NSLog(@"Activity has been recreated:\n%@", activity), @"Check description");
 }
 
+- (void)testUnits {
+    CFActivity *activity = [[CFActivity alloc] initWithType:ActivityTransportation];
+    activity.units=[@[@"km", @"yr", @"km", @"L"] mutableCopy];
+    activity.usageInCurrentUnits=10;
+    activity.efficiencyInCurrentUnits=20;
+    XCTAssertEqualWithAccuracy(activity.usageInCurrentUnits, 10, .001, @"Convert to and fro");
+    XCTAssertEqualWithAccuracy(activity.usage, .1192, .001, @"store as mi/wk");
+    XCTAssertEqualWithAccuracy(activity.efficiencyInCurrentUnits, 20, .001, @"convert to and fro efficiency");
+    XCTAssertEqualWithAccuracy(47.04, activity.efficiency, .01, @"store as mi/gal");
+}
+
 #pragma mark - Test Specific Footprints
 
 @end

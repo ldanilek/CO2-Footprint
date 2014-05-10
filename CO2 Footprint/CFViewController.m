@@ -141,39 +141,47 @@
 {
     [super viewDidLoad];
     
-    //set up a table for each activity type
-    if ([self multipleTables]) {
-        CGFloat tableWidth = self.view.bounds.size.width/typeCount();
-        CGFloat tableX = 0;
-        CGFloat tableY = 300;
-        CGFloat tableHeight = self.view.bounds.size.height-tableY;
-        NSMutableArray *tableViews = [NSMutableArray array];
-        for (ActivityType type=0; type<typeCount(); type++) {
-            UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(tableX, tableY, tableWidth, tableHeight) style:UITableViewStylePlain];
-            table.delegate=self;
-            table.dataSource=self;
-            table.tag=type;
-            [self.view addSubview:table];
-            [tableViews addObject:table];
-            
-            tableX+=tableWidth;
-        }
-        self.tableViews=[tableViews copy];
-    } else {
-        CGFloat tableY = 100;
-        CGFloat tableHeight = self.view.bounds.size.height-tableY;
-        UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, tableY, self.view.bounds.size.width, tableHeight) style:UITableViewStylePlain];
-        table.delegate=self;
-        table.dataSource=self;
-        [self.view addSubview:table];
-        self.tableViews=@[table];
-    }
-    
     //respond to notifications
     [[NSNotificationCenter defaultCenter] addObserverForName:FOOTPRINT_CHANGED_NOTIFICATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
         [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:self.brain] forKey:FOOTPRINT_BRAIN_STORAGE_KEY];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }];
+}
+
+- (void)viewDidLayoutSubviews {
+    static BOOL loaded = NO;
+    if (!loaded) {
+        loaded=YES;
+        
+        //set up a table for each activity type
+        if ([self multipleTables]) {
+            CGFloat tableWidth = self.view.bounds.size.width/typeCount();
+            CGFloat tableX = 0;
+            CGFloat tableY = 300;
+            CGFloat tableHeight = self.view.bounds.size.height-tableY;
+            NSMutableArray *tableViews = [NSMutableArray array];
+            for (ActivityType type=0; type<typeCount(); type++) {
+                UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(tableX, tableY, tableWidth, tableHeight) style:UITableViewStylePlain];
+                table.delegate=self;
+                table.dataSource=self;
+                table.tag=type;
+                [self.view addSubview:table];
+                [tableViews addObject:table];
+                
+                tableX+=tableWidth;
+            }
+            self.tableViews=[tableViews copy];
+        } else {
+            CGFloat tableY = 100;
+            CGFloat tableHeight = self.view.bounds.size.height-tableY;
+            UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, tableY, self.view.bounds.size.width, tableHeight) style:UITableViewStylePlain];
+            table.delegate=self;
+            table.dataSource=self;
+            [self.view addSubview:table];
+            self.tableViews=@[table];
+        }
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning

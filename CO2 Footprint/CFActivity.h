@@ -45,6 +45,7 @@ typedef NSUInteger ActivitySubtype;//subtype is an integer from one of the ACTIV
 - (NSString *)stringForSubtype;
 
 //for storage
+//units are stored in wk, gal, mi, J
 @property (nonatomic, readonly) ActivityType type;
 //editable attributes
 @property (nonatomic) ActivitySubtype subtype;
@@ -55,6 +56,15 @@ typedef NSUInteger ActivitySubtype;//subtype is an integer from one of the ACTIV
 @property (nonatomic) double sharingCount;//people sharing the activity. total footprint is divided by this number to distribute evenly.
 @property (nonatomic) double efficiency;//this will often be determined/estimated automatically. usually miles/gallon or (hours to use one unit of power)
 @property (nonatomic) double usage;//per week, how many hours is it used, or how many miles are driven, etc.
+//@[usageTop, usageBottom, efficiencyTop, efficiencyBottom]
+@property (nonatomic, strong) NSMutableArray *units;//in one array so it only has to be stored once and can be changed easily. objects are strings (like 'mi' and 'wk' and 'gal')
+
+//not stored. uses current units to set efficiency and usage
+@property (nonatomic) double efficiencyInCurrentUnits;
+@property (nonatomic) double usageInCurrentUnits;
+
+- (NSArray *)possibleUnitsForIndex:(int)unitIndex;
+- (int)currentUnitForIndex:(int)unitIndex;//returns an index into possibleUnitsForIndex:
 
 @end
 

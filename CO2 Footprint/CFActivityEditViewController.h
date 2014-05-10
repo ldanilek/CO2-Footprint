@@ -20,5 +20,14 @@
 @property (nonatomic, weak) IBOutlet UIStepper *shareStepper;
 @property (nonatomic, weak) IBOutlet UISlider *usageSlider;
 @property (nonatomic, weak) IBOutlet UILabel *usageLabel;
+@property (nonatomic, weak) IBOutlet UISlider *efficiencySlider;
+@property (nonatomic, weak) IBOutlet UILabel *efficiencyLabel;
+
+@property (nonatomic, weak) IBOutlet UIButton *usageTopUnit;
+@property (nonatomic, weak) IBOutlet UIButton *usageBottomUnit;
+@property (nonatomic, weak) IBOutlet UIButton *efficiencyTopUnit;
+@property (nonatomic, weak) IBOutlet UIButton *efficiencyBottomUnit;
+
+- (IBAction)editUnit:(id)sender;
 
 @end
