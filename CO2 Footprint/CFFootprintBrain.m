@@ -8,6 +8,12 @@
 
 #import "CFFootprintBrain.h"
 
+@interface CFFootprintBrain ()
+
+@property (nonatomic, strong) NSArray *sortedTypes;//only calculate once so the deletion handler doesn't get pissed
+
+@end
+
 @implementation CFFootprintBrain
 
 - (double)footprintForType:(ActivityType)activityType {
@@ -20,18 +26,25 @@
     return footprint;
 }
 
-- (ActivityType)activityTypeAtIndex:(int)index {
-    NSMutableArray *types = [NSMutableArray array];
-    for (ActivityType i=0; i<typeCount(); i++) {
-        [types addObject:@(i)];
+- (NSArray *)sortedTypes {
+    if (!_sortedTypes) {
+        NSMutableArray *types = [NSMutableArray array];
+        for (ActivityType i=0; i<typeCount(); i++) {
+            [types addObject:@(i)];
+        }
+        [types sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            double diff = [self footprintForType:[obj2 intValue]]-[self footprintForType:[obj1 intValue]];
+            if (diff>0) return NSOrderedDescending;
+            if (diff<0) return NSOrderedAscending;
+            return NSOrderedSame;
+        }];
+        _sortedTypes=[types copy];
     }
-    [types sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        double diff = [self footprintForType:[obj2 intValue]]-[self footprintForType:[obj1 intValue]];
-        if (diff>0) return NSOrderedDescending;
-        if (diff<0) return NSOrderedAscending;
-        return NSOrderedSame;
-    }];
-    return [types[index] intValue];
+    return _sortedTypes;
+}
+
+- (ActivityType)activityTypeAtIndex:(int)index {
+    return [self.sortedTypes[index] intValue];
 }
 
 - (void)deleteActivityAtIndex:(int)index withType:(ActivityType)activityType {
@@ -52,6 +65,10 @@
 
 - (NSString *)activityDisplayAtIndex:(int)index forType:(ActivityType)activityType {
     return [[self activityAtIndex:index withType:activityType] display];
+}
+
+- (NSString *)activityDetailAtIndex:(int)index forType:(ActivityType)activityType {
+    return [[self activityAtIndex:index withType:activityType] detailDisplay];
 }
 
 - (CFActivity *)activityAtIndex:(int)index withType:(ActivityType)activityType {

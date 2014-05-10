@@ -34,6 +34,7 @@ typedef NSUInteger ActivitySubtype;//subtype is an integer from one of the ACTIV
 //responds to description for debugging
 
 - (NSString *)display;//not for debugging. for display in table view (must be short)
+- (NSString *)detailDisplay;//footprint
 
 //usually will be initialized from NSKeyedUnarchiver, but when that's not available, call initWithType:, the designated initializer
 - (instancetype)initWithType:(ActivityType)activityType;

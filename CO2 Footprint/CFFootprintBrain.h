@@ -25,6 +25,7 @@
 - (NSUInteger)activityCountOfType:(ActivityType)activityType;
 - (CFActivity *)activityAtIndex:(int)index withType:(ActivityType)activityType;
 - (NSString *)activityDisplayAtIndex:(int)index forType:(ActivityType)activityType;
+- (NSString *)activityDetailAtIndex:(int)index forType:(ActivityType)activityType;
 - (void)deleteActivityAtIndex:(int)index withType:(ActivityType)activityType;
 
 - (CFActivity *)newActivityWithType:(ActivityType)activityType;//adds activity to carbon footprint and returns it for further editing

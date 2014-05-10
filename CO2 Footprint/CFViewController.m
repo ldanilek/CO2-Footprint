@@ -65,19 +65,20 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    //add one for "Add Transportation" etc. at bottom
     if ([self multipleTables]) {
         //tables identified by tag
         return [self.brain activityCountOfType:tableView.tag]+1;
     } else {
         //type identified by section
-        return [self.brain activityCountOfType:section]+1;
+        return [self.brain activityCountOfType:[self.brain activityTypeAtIndex:section]]+1;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
     ActivityType type;
     if ([self multipleTables]) {
         type = tableView.tag;
@@ -89,6 +90,7 @@
         cell.textLabel.text=[@"New " stringByAppendingString:stringForType(type)];
     } else {
         cell.textLabel.text=[self.brain activityDisplayAtIndex:indexPath.row forType:type];
+        cell.detailTextLabel.text=[self.brain activityDetailAtIndex:indexPath.row forType:type];
     }
     return cell;
 }
