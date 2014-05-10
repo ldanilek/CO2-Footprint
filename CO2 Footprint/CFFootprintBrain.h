@@ -18,6 +18,10 @@
 - (double)footprint;//in tons of carbon per week
 @property (strong, nonatomic) NSArray *activities;
 
+//sorted by footprint
+- (ActivityType)activityTypeAtIndex:(int)index;
+- (double)footprintForType:(ActivityType)activityType;
+
 - (NSUInteger)activityCountOfType:(ActivityType)activityType;
 - (CFActivity *)activityAtIndex:(int)index withType:(ActivityType)activityType;
 - (NSString *)activityDisplayAtIndex:(int)index forType:(ActivityType)activityType;

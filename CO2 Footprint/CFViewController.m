@@ -43,13 +43,13 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    ActivityType type = [self multipleTables] ? tableView.tag : indexPath.section;
+    ActivityType type = [self multipleTables] ? tableView.tag : [self.brain activityTypeAtIndex:indexPath.section];
     return indexPath.row!=[self.brain activityCountOfType:type];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle==UITableViewCellEditingStyleDelete) {
-        ActivityType type = [self multipleTables] ? tableView.tag : indexPath.section;
+        ActivityType type = [self multipleTables] ? tableView.tag : [self.brain activityTypeAtIndex:indexPath.section];
         [self.brain deleteActivityAtIndex:indexPath.row withType:type];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         [[NSNotificationCenter defaultCenter] postNotificationName:FOOTPRINT_CHANGED_NOTIFICATION object:nil];
@@ -58,7 +58,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (![self multipleTables]) {
-        ActivityType type = section;
+        ActivityType type = [self.brain activityTypeAtIndex:section];
         return stringForType(type);
     }
     return nil;
@@ -82,7 +82,7 @@
     if ([self multipleTables]) {
         type = tableView.tag;
     } else {
-        type = indexPath.section;
+        type = [self.brain activityTypeAtIndex:indexPath.section];
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     }
     if (indexPath.row==[self.brain activityCountOfType:type]) {
@@ -94,7 +94,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ActivityType type = [self multipleTables] ? tableView.tag : indexPath.section;
+    ActivityType type = [self multipleTables] ? tableView.tag : [self.brain activityTypeAtIndex:indexPath.section];
     if (indexPath.row==[self.brain activityCountOfType:type]) {
         CFActivity *newActivity = [self.brain newActivityWithType:type];
         [[NSNotificationCenter defaultCenter] postNotificationName:FOOTPRINT_CHANGED_NOTIFICATION object:nil];
@@ -172,7 +172,7 @@
                 UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(tableX, tableY, tableWidth, tableHeight) style:UITableViewStylePlain];
                 table.delegate=self;
                 table.dataSource=self;
-                table.tag=type;
+                table.tag=[self.brain activityTypeAtIndex:type];
                 [self.view addSubview:table];
                 [tableViews addObject:table];
                 
