@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CFValue.h"
 
 @class CFUnitPickerViewController;
 @protocol CFUnitPickerDelegate <NSObject>
@@ -23,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 
-@property (atomic) int unitIndex;
+@property (atomic) id valueEditing;//a CFValue. just used to identify what to do after picker picks the value
+@property (atomic) BOOL editingTop;
 
 @end

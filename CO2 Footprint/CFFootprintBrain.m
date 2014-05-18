@@ -10,128 +10,113 @@
 
 @interface CFFootprintBrain ()
 
-@property (nonatomic, strong) NSArray *sortedTypes;//only calculate once so the deletion handler doesn't get pissed
-
 @end
 
 @implementation CFFootprintBrain
 
-- (double)footprintForType:(ActivityType)activityType {
-    double footprint = 0;
-    for (CFActivity *activity in self.activities) {
-        if (activity.type==activityType) {
-            footprint+=activity.footprint;
-        }
+#pragma mark - Default Values
+
+- (double)homeSharing {
+    if (!_homeSharing) {
+        _homeSharing=1;
     }
-    return footprint;
+    return _homeSharing;
 }
 
-- (NSArray *)sortedTypes {
-    if (!_sortedTypes) {
-        NSMutableArray *types = [NSMutableArray array];
-        for (ActivityType i=0; i<typeCount(); i++) {
-            [types addObject:@(i)];
-        }
-        [types sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-            double diff = [self footprintForType:[obj2 intValue]]-[self footprintForType:[obj1 intValue]];
-            if (diff>0) return NSOrderedDescending;
-            if (diff<0) return NSOrderedAscending;
-            return NSOrderedSame;
-        }];
-        _sortedTypes=[types copy];
+- (double)carShared {
+    if (!_carShared) {
+        _carShared=1;
     }
-    return _sortedTypes;
+    return _carShared;
 }
 
-- (ActivityType)activityTypeAtIndex:(int)index {
-    return [self.sortedTypes[index] intValue];
-}
-
-- (void)deleteActivityAtIndex:(int)index withType:(ActivityType)activityType {
-    int indexToDelete=self.activities.count;
-    NSUInteger count = 0;
-    int indexChecking = 0;
-    for (CFActivity *activity in self.activities) {
-        if (activity.type==activityType) {
-            if (count==index) indexToDelete = indexChecking;
-            count++;
-        }
-        indexChecking++;
+- (double)foodShared {
+    if (!_foodShared) {
+        _foodShared=1;
     }
-    NSArray *before = [self.activities subarrayWithRange:NSMakeRange(0, indexToDelete)];
-    NSArray *after = [self.activities subarrayWithRange:NSMakeRange(indexToDelete+1, self.activities.count-indexToDelete-1)];
-    self.activities=[before arrayByAddingObjectsFromArray:after];
+    return _foodShared;
 }
 
-- (NSString *)activityDisplayAtIndex:(int)index forType:(ActivityType)activityType {
-    return [[self activityAtIndex:index withType:activityType] display];
-}
+#pragma mark - Footprint Calculations
 
-- (NSString *)activityDetailAtIndex:(int)index forType:(ActivityType)activityType {
-    return [[self activityAtIndex:index withType:activityType] detailDisplay];
-}
-
-- (CFActivity *)activityAtIndex:(int)index withType:(ActivityType)activityType {
-    NSUInteger count = 0;
-    for (CFActivity *activity in self.activities) {
-        if (activity.type==activityType) {
-            if (count==index) return activity;
-            count++;
-        }
-    }
-    return nil;
-}
-
-- (NSUInteger)activityCountOfType:(ActivityType)activityType {
-    NSUInteger count = 0;
-    for (CFActivity *activity in self.activities) {
-        if (activity.type==activityType) count++;
-    }
-    return count;
-}
-
-- (CFActivity *)newActivityWithType:(ActivityType)activityType {
-    CFActivity *newActivity = [[CFActivity alloc] initWithType:activityType];
-    self.activities=[self.activities arrayByAddingObject:newActivity];
-    return newActivity;
-}
-
-- (double)footprint {
-    double footprint = 0;
-    for (CFActivity *activity in self.activities) {
-        footprint+=[activity footprint];
-    }
-    return footprint;
-}
-
-//if activities haven't been set already, create an empty array
-- (NSArray *)activities {
-    if (!_activities) {
-        _activities=[NSArray array];
-    }
-    return _activities;
-}
-
-#define ACTIVITIES_KEY @"Key for storing activities"
-
-static int sign(double x) {
-    if (x>0) return 1;
-    if (x<0) return -1;
+- (double)homeFootprint {
     return 0;
 }
 
+#define TONS_PER_GALLON_OF_GASOLINE .01
+#define TONS_PER_FLIGHT .5
+
+- (double)transportFootprint {
+    double milesPerGallon = self.vehicleFuelEfficiency.value;
+    double milesPerWeek = self.vehicleMileage.value;
+    //I want gallons per week = gallons/mile * miles/week
+    double gallonsPerWeek = milesPerWeek/milesPerGallon;
+    return gallonsPerWeek*TONS_PER_GALLON_OF_GASOLINE + self.numberOfFlights/52.*TONS_PER_FLIGHT;
+}
+
+- (double)dietFootprint {
+    return 0;
+}
+
+- (double)footprint {
+    return [self homeFootprint]+[self dietFootprint]+[self transportFootprint];
+}
+
+#pragma mark - Storage
+
+#define HOME_TYPE @"key for home type"
+#define HOME_LOCATION @"key for location of home"
+#define FUEL_TYPE @"key for heating fuel"
+#define FUEL_BILL @"key for heating bill"
+#define ELECTRIC_BILL @"key for electric bill"
+#define HOME_SHARE @"key for shared home"
+
+#define CAR_EFFICIENCY @"key for efficiency of car fuel"
+#define CAR_MILEAGE @"key for mileage of car"
+#define FLIGHTS @"key for number of flights"
+#define CAR_SHARE @"key for sharing car"
+
+#define DIET_TYPE @"key for type of diet"
+#define GROCERY_BILL @"key for cost of groceries"
+#define FOOD_SHARE @"key for sharing food"
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self=[self init]) {
-        self.activities=[aDecoder decodeObjectForKey:ACTIVITIES_KEY];
-        self.activities=[self.activities sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-            return sign([obj2 footprint]-[obj1 footprint]);
-        }];
+        self.homeType=[aDecoder decodeIntForKey:HOME_TYPE];
+        self.heatingFuelType=[aDecoder decodeIntForKey:FUEL_TYPE];
+        self.fuelBill=[aDecoder decodeObjectForKey:FUEL_BILL];
+        self.electricBill = [aDecoder decodeObjectForKey:ELECTRIC_BILL];
+        self.homeState=[aDecoder decodeObjectForKey:HOME_LOCATION];
+        self.homeSharing=[aDecoder decodeDoubleForKey:HOME_SHARE];
+        
+        self.vehicleFuelEfficiency=[aDecoder decodeObjectForKey:CAR_EFFICIENCY];
+        self.vehicleMileage = [aDecoder decodeObjectForKey:CAR_MILEAGE];
+        self.numberOfFlights=[aDecoder decodeIntForKey:FLIGHTS];
+        self.carShared=[aDecoder decodeDoubleForKey:CAR_SHARE];
+        
+        self.diet=[aDecoder decodeIntForKey:DIET_TYPE];
+        self.groceryBill=[aDecoder decodeObjectForKey:GROCERY_BILL];
+        self.foodShared=[aDecoder decodeDoubleForKey:FOOD_SHARE];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.activities forKey:ACTIVITIES_KEY];
+    [aCoder encodeObject:self.fuelBill forKey:FUEL_BILL];
+    [aCoder encodeInteger:self.homeType forKey:HOME_TYPE];
+    [aCoder encodeInteger:self.heatingFuelType forKey:FUEL_TYPE];
+    [aCoder encodeObject:self.electricBill forKey:ELECTRIC_BILL];
+    [aCoder encodeObject:self.homeState forKey:HOME_LOCATION];
+    [aCoder encodeDouble:self.homeSharing forKey:HOME_SHARE];
+    
+    [aCoder encodeObject:self.vehicleFuelEfficiency forKey:CAR_EFFICIENCY];
+    [aCoder encodeObject:self.vehicleMileage forKey:CAR_MILEAGE];
+    [aCoder encodeInteger:self.numberOfFlights forKey:FLIGHTS];
+    [aCoder encodeDouble:self.carShared forKey:CAR_SHARE];
+    
+    [aCoder encodeObject:self.groceryBill forKey:GROCERY_BILL];
+    [aCoder encodeInteger:self.diet forKey:DIET_TYPE];
+    [aCoder encodeDouble:self.foodShared forKey:FOOD_SHARE];
 }
 
 @end

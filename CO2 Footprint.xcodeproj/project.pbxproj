@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B1E2CC3191D7D3200E2AB14 /* CFActivityEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E2CC1191D7D3200E2AB14 /* CFActivityEditViewController.m */; };
-		9B1E2CC4191D7D3200E2AB14 /* CFActivityEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E2CC1191D7D3200E2AB14 /* CFActivityEditViewController.m */; };
 		9B1E2CC9191E746500E2AB14 /* CFUnitPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E2CC8191E746500E2AB14 /* CFUnitPickerViewController.m */; };
 		9B1E2CCA191E746500E2AB14 /* CFUnitPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E2CC8191E746500E2AB14 /* CFUnitPickerViewController.m */; };
 		9B91419E191AA26700D30448 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B91419D191AA26700D30448 /* Foundation.framework */; };
@@ -30,8 +28,11 @@
 		9B9141D8191AA7D700D30448 /* DesignSpecs.md in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141D7191AA7D700D30448 /* DesignSpecs.md */; };
 		9B9141DA191AE56A00D30448 /* testSpecs.md in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141D9191AE56A00D30448 /* testSpecs.md */; };
 		9B9141DE191AE65400D30448 /* CFFootprintBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141DD191AE65400D30448 /* CFFootprintBrain.m */; };
-		9B9141E1191AE8B900D30448 /* CFActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141E0191AE8B900D30448 /* CFActivity.m */; };
-		9B9141E2191AE8B900D30448 /* CFActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141E0191AE8B900D30448 /* CFActivity.m */; };
+		9BE410FD192937EF003DBBFA /* CFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE410FC192937EF003DBBFA /* CFValue.m */; };
+		9BE410FE192937EF003DBBFA /* CFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE410FC192937EF003DBBFA /* CFValue.m */; };
+		9BE4110119294EDB003DBBFA /* CFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE4110019294EDB003DBBFA /* CFHomeViewController.m */; };
+		9BE4110419294EEC003DBBFA /* CFTransportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE4110319294EEC003DBBFA /* CFTransportViewController.m */; };
+		9BE4110719294EF8003DBBFA /* CFDietViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE4110619294EF8003DBBFA /* CFDietViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9B1E2CC0191D7D3200E2AB14 /* CFActivityEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFActivityEditViewController.h; sourceTree = "<group>"; };
-		9B1E2CC1191D7D3200E2AB14 /* CFActivityEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFActivityEditViewController.m; sourceTree = "<group>"; };
 		9B1E2CC7191E746500E2AB14 /* CFUnitPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFUnitPickerViewController.h; sourceTree = "<group>"; };
 		9B1E2CC8191E746500E2AB14 /* CFUnitPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFUnitPickerViewController.m; sourceTree = "<group>"; };
 		9B91419A191AA26700D30448 /* CO2 Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CO2 Footprint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,8 +73,14 @@
 		9B9141D9191AE56A00D30448 /* testSpecs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testSpecs.md; sourceTree = "<group>"; };
 		9B9141DC191AE65400D30448 /* CFFootprintBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFFootprintBrain.h; sourceTree = "<group>"; };
 		9B9141DD191AE65400D30448 /* CFFootprintBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFFootprintBrain.m; sourceTree = "<group>"; };
-		9B9141DF191AE8B900D30448 /* CFActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFActivity.h; sourceTree = "<group>"; };
-		9B9141E0191AE8B900D30448 /* CFActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFActivity.m; sourceTree = "<group>"; };
+		9BE410FB192937EF003DBBFA /* CFValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFValue.h; sourceTree = "<group>"; };
+		9BE410FC192937EF003DBBFA /* CFValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFValue.m; sourceTree = "<group>"; };
+		9BE410FF19294EDB003DBBFA /* CFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFHomeViewController.h; sourceTree = "<group>"; };
+		9BE4110019294EDB003DBBFA /* CFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFHomeViewController.m; sourceTree = "<group>"; };
+		9BE4110219294EEC003DBBFA /* CFTransportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTransportViewController.h; sourceTree = "<group>"; };
+		9BE4110319294EEC003DBBFA /* CFTransportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTransportViewController.m; sourceTree = "<group>"; };
+		9BE4110519294EF8003DBBFA /* CFDietViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFDietViewController.h; sourceTree = "<group>"; };
+		9BE4110619294EF8003DBBFA /* CFDietViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFDietViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +146,12 @@
 				9B9141B2191AA26700D30448 /* Main_iPad.storyboard */,
 				9B9141B5191AA26700D30448 /* CFViewController.h */,
 				9B9141B6191AA26700D30448 /* CFViewController.m */,
-				9B1E2CC0191D7D3200E2AB14 /* CFActivityEditViewController.h */,
-				9B1E2CC1191D7D3200E2AB14 /* CFActivityEditViewController.m */,
+				9BE410FF19294EDB003DBBFA /* CFHomeViewController.h */,
+				9BE4110019294EDB003DBBFA /* CFHomeViewController.m */,
+				9BE4110219294EEC003DBBFA /* CFTransportViewController.h */,
+				9BE4110319294EEC003DBBFA /* CFTransportViewController.m */,
+				9BE4110519294EF8003DBBFA /* CFDietViewController.h */,
+				9BE4110619294EF8003DBBFA /* CFDietViewController.m */,
 				9B1E2CC7191E746500E2AB14 /* CFUnitPickerViewController.h */,
 				9B1E2CC8191E746500E2AB14 /* CFUnitPickerViewController.m */,
 				9B9141DB191AE63A00D30448 /* Model */,
@@ -189,8 +198,8 @@
 			children = (
 				9B9141DC191AE65400D30448 /* CFFootprintBrain.h */,
 				9B9141DD191AE65400D30448 /* CFFootprintBrain.m */,
-				9B9141DF191AE8B900D30448 /* CFActivity.h */,
-				9B9141E0191AE8B900D30448 /* CFActivity.m */,
+				9BE410FB192937EF003DBBFA /* CFValue.h */,
+				9BE410FC192937EF003DBBFA /* CFValue.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -299,9 +308,11 @@
 			files = (
 				9B9141AA191AA26700D30448 /* main.m in Sources */,
 				9B9141AE191AA26700D30448 /* CFAppDelegate.m in Sources */,
+				9BE4110119294EDB003DBBFA /* CFHomeViewController.m in Sources */,
 				9B1E2CC9191E746500E2AB14 /* CFUnitPickerViewController.m in Sources */,
-				9B1E2CC3191D7D3200E2AB14 /* CFActivityEditViewController.m in Sources */,
-				9B9141E1191AE8B900D30448 /* CFActivity.m in Sources */,
+				9BE4110719294EF8003DBBFA /* CFDietViewController.m in Sources */,
+				9BE410FD192937EF003DBBFA /* CFValue.m in Sources */,
+				9BE4110419294EEC003DBBFA /* CFTransportViewController.m in Sources */,
 				9B9141B7191AA26700D30448 /* CFViewController.m in Sources */,
 				9B9141DE191AE65400D30448 /* CFFootprintBrain.m in Sources */,
 			);
@@ -313,8 +324,7 @@
 			files = (
 				9B9141CC191AA26700D30448 /* CO2_FootprintTests.m in Sources */,
 				9B1E2CCA191E746500E2AB14 /* CFUnitPickerViewController.m in Sources */,
-				9B9141E2191AE8B900D30448 /* CFActivity.m in Sources */,
-				9B1E2CC4191D7D3200E2AB14 /* CFActivityEditViewController.m in Sources */,
+				9BE410FE192937EF003DBBFA /* CFValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

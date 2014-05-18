@@ -7,27 +7,64 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CFActivity.h"
+#import "CFValue.h"
 
 #define FOOTPRINT_CHANGED_NOTIFICATION @"Note: the footprint has now changed. Store it now."
+//changing from Activities to Input categories
+
+typedef enum {
+    HomeHouse,
+    HomeApartment,
+} HomeType;
+
+typedef enum {
+    HeatingFuelGas,
+    HeatingFuelPropane,
+    HeatingFuelPellets,
+    HeatingFuelNone,
+} HeatingFuelType;
+
+typedef enum {
+    DietVegan,
+    DietVegetarian,
+    DietOmnivore,
+    DietCarnivore
+} DietType;
 
 @interface CFFootprintBrain : NSObject <NSCoding>
 
 //initializing from NSKeyedUnarchiver is encouraged, when possible
-//otherwise, create a blank (no activities) footprint with the designated initializer init
+//otherwise, create a blank footprint with the designated initializer init
+
 - (double)footprint;//in tons of carbon per week
-@property (strong, nonatomic) NSArray *activities;
+//all footprints are per week
 
-//sorted by footprint
-- (ActivityType)activityTypeAtIndex:(int)index;
-- (double)footprintForType:(ActivityType)activityType;
+//no more individual activities
+//just the three categories: Home, Transportation, and Diet
+#pragma mark - Home
+@property (nonatomic) HomeType homeType;
+@property (nonatomic) HeatingFuelType heatingFuelType;
+@property (nonatomic, strong) NSString *homeState;
+@property (nonatomic, strong) CFValue *fuelBill;
+@property (nonatomic, strong) CFValue *electricBill;
+@property (nonatomic) double homeSharing;
 
-- (NSUInteger)activityCountOfType:(ActivityType)activityType;
-- (CFActivity *)activityAtIndex:(int)index withType:(ActivityType)activityType;
-- (NSString *)activityDisplayAtIndex:(int)index forType:(ActivityType)activityType;
-- (NSString *)activityDetailAtIndex:(int)index forType:(ActivityType)activityType;
-- (void)deleteActivityAtIndex:(int)index withType:(ActivityType)activityType;
+- (double)homeFootprint;
 
-- (CFActivity *)newActivityWithType:(ActivityType)activityType;//adds activity to carbon footprint and returns it for further editing
+#pragma mark - Transportation
+@property (nonatomic, strong) CFValue *vehicleFuelEfficiency;
+@property (nonatomic, strong) CFValue *vehicleMileage;
+@property (nonatomic) int numberOfFlights;//per year
+@property (nonatomic) double carShared;
+
+- (double)transportFootprint;
+
+#pragma mark - Diet
+@property (nonatomic) DietType diet;
+@property (nonatomic) CFValue *groceryBill;
+@property (nonatomic) double foodShared;
+//include eating out?
+
+- (double)dietFootprint;
 
 @end

@@ -8,12 +8,14 @@
 
 #import "CFViewController.h"
 #import "CFFootprintBrain.h"
-#import "CFActivityEditViewController.h"
+#import "CFHomeViewController.h"
+#import "CFTransportViewController.h"
+#import "CFDietViewController.h"
 
 @interface CFViewController () <UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) CFFootprintBrain *brain;
-@property (nonatomic, strong) NSArray *tableViews;//could be one table view. use mostly for reloading
+@property (nonatomic, weak) UITableView *tableView;//could be one table view. use mostly for reloading
 
 @property (nonatomic, strong) UIPopoverController *popover;
 
@@ -33,118 +35,109 @@
     return _brain;
 }
 
-//if only one table, types are represented by sections
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if ([self multipleTables]) {
-        return 1;
-    } else {
-        return typeCount();
-    }
+    return 2;
 }
+
+//About Table View
+//just one table view, even on iPad
+//no rows are editable or deletable
+
+//Output section
+//Carbon Footprint label
+//Explanation
+//Extrapolation
+//Lifestyle changes
+
+//Input section
+//Home
+//Transportation
+//Diet
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    ActivityType type = [self multipleTables] ? tableView.tag : [self.brain activityTypeAtIndex:indexPath.section];
-    return indexPath.row!=[self.brain activityCountOfType:type];
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle==UITableViewCellEditingStyleDelete) {
-        ActivityType type = [self multipleTables] ? tableView.tag : [self.brain activityTypeAtIndex:indexPath.section];
-        [self.brain deleteActivityAtIndex:indexPath.row withType:type];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [[NSNotificationCenter defaultCenter] postNotificationName:FOOTPRINT_CHANGED_NOTIFICATION object:nil];
-    }
+    return NO;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (![self multipleTables]) {
-        ActivityType type = [self.brain activityTypeAtIndex:section];
-        return stringForType(type);
-    }
-    return nil;
+    return @[@"Output", @"Input"][section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //add one for "Add Transportation" etc. at bottom
-    if ([self multipleTables]) {
-        //tables identified by tag
-        return [self.brain activityCountOfType:tableView.tag]+1;
-    } else {
-        //type identified by section
-        return [self.brain activityCountOfType:[self.brain activityTypeAtIndex:section]]+1;
+    if (section) {//inputs
+        return 3;
+    } else {//outputs
+        return 4;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
-    ActivityType type;
-    if ([self multipleTables]) {
-        type = tableView.tag;
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    
+    if (indexPath.section) {//inputs
+        cell.textLabel.text=@[@"Home", @"Transportation", @"Diet"][indexPath.row];
+        if (![self usePopovers]) cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     } else {
-        type = [self.brain activityTypeAtIndex:indexPath.section];
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-    }
-    if (indexPath.row==[self.brain activityCountOfType:type]) {
-        cell.textLabel.text=[@"New " stringByAppendingString:stringForType(type)];
-    } else {
-        cell.textLabel.text=[self.brain activityDisplayAtIndex:indexPath.row forType:type];
-        cell.detailTextLabel.text=[self.brain activityDetailAtIndex:indexPath.row forType:type];
+        //outputs
+        if (indexPath.row) {
+            cell.textLabel.text=@[@"",@"Explanation", @"Extrapolation", @"Improvements"][indexPath.row];
+            if (![self usePopovers]) cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        } else {
+            //CO2 Footprint
+            cell.textLabel.text=[NSString stringWithFormat:@"Footprint: %g tons/year", self.brain.footprint*52];
+        }
     }
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.row||indexPath.section;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ActivityType type = [self multipleTables] ? tableView.tag : [self.brain activityTypeAtIndex:indexPath.section];
-    if (indexPath.row==[self.brain activityCountOfType:type]) {
-        CFActivity *newActivity = [self.brain newActivityWithType:type];
-        [[NSNotificationCenter defaultCenter] postNotificationName:FOOTPRINT_CHANGED_NOTIFICATION object:nil];
-        [self editActivity:newActivity tableView:tableView indexPath:indexPath];
-    } else {
-        [self editActivity:[self.brain activityAtIndex:indexPath.row withType:type] tableView:tableView indexPath:indexPath];
-    }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self editFromTableView:tableView indexPath:indexPath];
+    if (![self usePopovers])[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
     self.popover=nil;
-    for (UITableView *tableView in self.tableViews) {
-        [tableView reloadData];
-    }
+    [self.tableView reloadData];
 }
 
 //moves to a new view controller to edit.
 //if in iPad, present from popover from cell
-- (void)editActivity:(CFActivity *)activity tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
-    if ([self multipleTables]) {
-        CFActivityEditViewController *editor = [[self storyboard] instantiateViewControllerWithIdentifier:@"Edit Activity"];
-        editor.activity=activity;
+- (void)editFromTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+    NSString *identifier = @"Edit Home";
+    if (indexPath.row==1) {
+        identifier=@"Edit Transport";
+    } else if (indexPath.row==2) {
+        identifier=@"Edit Diet";
+    }
+    if ([self usePopovers]) {
+        CFHomeViewController *editor = [[self storyboard] instantiateViewControllerWithIdentifier:identifier];
+        editor.footprint=self.brain;
         self.popover = [[UIPopoverController alloc] initWithContentViewController:editor];
         CGRect rect = [tableView cellForRowAtIndexPath:indexPath].frame;
         [self.popover presentPopoverFromRect:rect inView:tableView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         self.popover.delegate=self;
     } else {
-        [self performSegueWithIdentifier:@"Edit Activity" sender:activity];
+        [self performSegueWithIdentifier:identifier sender:indexPath];
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController respondsToSelector:@selector(setActivity:)]) {
-        [(CFActivityEditViewController *)segue.destinationViewController setActivity:sender];
+    if ([segue.destinationViewController respondsToSelector:@selector(setFootprint:)]) {
+        [(id)segue.destinationViewController setFootprint:self.brain];
     }
 }
 
-//when I have a bigger screen, I can line up the tables horizontally
-- (BOOL)multipleTables {
+//when I have an iPad, I can use popovers to present and edit information
+- (BOOL)usePopovers {
     return UIUserInterfaceIdiomPad==UI_USER_INTERFACE_IDIOM();
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    for (UITableView *tableView in self.tableViews) {
-        [tableView reloadData];
-    }
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -162,35 +155,13 @@
     static BOOL loaded = NO;
     if (!loaded) {
         loaded=YES;
-        
-        //set up a table for each activity type
-        if ([self multipleTables]) {
-            CGFloat tableWidth = self.view.bounds.size.width/typeCount();
-            CGFloat tableX = 0;
-            CGFloat tableY = 300;
-            CGFloat tableHeight = self.view.bounds.size.height-tableY;
-            NSMutableArray *tableViews = [NSMutableArray array];
-            for (ActivityType type=0; type<typeCount(); type++) {
-                UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(tableX, tableY, tableWidth, tableHeight) style:UITableViewStylePlain];
-                table.delegate=self;
-                table.dataSource=self;
-                table.tag=[self.brain activityTypeAtIndex:type];
-                [self.view addSubview:table];
-                [tableViews addObject:table];
-                
-                tableX+=tableWidth;
-            }
-            self.tableViews=[tableViews copy];
-        } else {
-            CGFloat tableY = 100;
-            CGFloat tableHeight = self.view.bounds.size.height-tableY;
-            UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, tableY, self.view.bounds.size.width, tableHeight) style:UITableViewStylePlain];
-            table.delegate=self;
-            table.dataSource=self;
-            [self.view addSubview:table];
-            self.tableViews=@[table];
-        }
-        
+        CGFloat tableY = 0;
+        CGFloat tableHeight = self.view.bounds.size.height-tableY;
+        UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, tableY, self.view.bounds.size.width, tableHeight) style:UITableViewStyleGrouped];
+        table.delegate=self;
+        table.dataSource=self;
+        [self.view addSubview:table];
+        self.tableView=table;
     }
 }
 

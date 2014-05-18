@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="C7E-eE-Pc5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="C7E-eE-Pc5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -31,17 +31,37 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Footprint" id="1Kn-eW-bR1"/>
                     <connections>
-                        <segue destination="95y-FU-hpA" kind="push" identifier="Edit Activity" id="UEa-xU-ZXn"/>
+                        <segue destination="95y-FU-hpA" kind="push" identifier="Edit Home" id="UEa-xU-ZXn"/>
+                        <segue destination="Ucf-YZ-eIg" kind="push" identifier="Edit Diet" id="7XU-8u-CAs"/>
+                        <segue destination="pQF-ab-vdh" kind="push" identifier="Edit Transport" id="MJ1-Jg-Vl1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voH-Pw-IZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="16" y="-175"/>
         </scene>
-        <!--Activity Edit View Controller-->
+        <!--Transport View Controller-->
+        <scene sceneID="EA1-7z-pm0">
+            <objects>
+                <viewController id="pQF-ab-vdh" customClass="CFTransportViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JI3-9y-TNc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2fy-vP-WJZ"/>
+                    <connections>
+                        <segue destination="vIN-BP-Zyr" kind="modal" identifier="Pick Unit" modalTransitionStyle="partialCurl" id="uWE-wT-HlX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EIC-1Y-LbW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="531" y="-765"/>
+        </scene>
+        <!--Home View Controller-->
         <scene sceneID="FFQ-R1-Pzt">
             <objects>
-                <viewController id="95y-FU-hpA" customClass="CFActivityEditViewController" sceneMemberID="viewController">
+                <viewController id="95y-FU-hpA" customClass="CFHomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pmH-8v-Wek">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -190,7 +210,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45r-of-IUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="421" y="-175"/>
+            <point key="canvasLocation" x="531" y="-175"/>
+        </scene>
+        <!--Diet View Controller-->
+        <scene sceneID="eKW-aw-Bll">
+            <objects>
+                <viewController id="Ucf-YZ-eIg" customClass="CFDietViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f9o-pB-9DT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="l7J-vX-46z"/>
+                    <connections>
+                        <segue destination="vIN-BP-Zyr" kind="modal" identifier="Pick Unit" modalTransitionStyle="partialCurl" id="FMS-Wb-II5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DWT-8A-oNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="538" y="456"/>
         </scene>
         <!--Unit Picker View Controller-->
         <scene sceneID="DP6-I7-XkV">
@@ -214,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xr3-Z7-duU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786" y="-175"/>
+            <point key="canvasLocation" x="1032" y="-175"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -222,4 +260,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="FMS-Wb-II5"/>
+    </inferredMetricsTieBreakers>
 </document>
