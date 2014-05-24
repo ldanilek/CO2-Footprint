@@ -19,6 +19,7 @@
 - (IBAction)sharingChanged:(UIStepper *)sender {
     self.footprint.foodShared=sender.value;
     self.sharingLabel.text=[NSString stringWithFormat:@"%g", self.footprint.foodShared];
+    [self commitEdit];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -35,6 +36,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     self.footprint.diet=row;
+    [self commitEdit];
 }
 
 - (void)picker:(CFUnitPickerViewController *)picker pickedUnit:(NSString *)unit {
@@ -72,6 +74,7 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:self.textField queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
         self.footprint.groceryBill.valueInCurrentUnits=self.textField.text.doubleValue;
+        [self commitEdit];
     }];
 }
 

@@ -14,4 +14,21 @@
 @property (atomic, strong) CFFootprintBrain *footprint;
 - (void)updateUnits;
 
+@property (nonatomic, weak) IBOutlet UIButton *efficiencyTop;
+@property (nonatomic, weak) IBOutlet UIButton *efficiencyBottom;
+@property (nonatomic, weak) IBOutlet UIButton *mileageTop;
+@property (nonatomic, weak) IBOutlet UIButton *mileageBottom;
+
+@property (nonatomic, weak) IBOutlet UITextField *efficiency;
+@property (nonatomic, weak) IBOutlet UITextField *mileage;
+@property (nonatomic, weak) IBOutlet UILabel *numberOfFlights;
+@property (nonatomic, weak) IBOutlet UILabel *sharing;
+@property (nonatomic, weak) IBOutlet UIStepper *flightsStepper;
+@property (nonatomic, weak) IBOutlet UIStepper *sharingStepper;
+
+- (IBAction)flightsChanged:(id)sender;
+- (IBAction)sharingChanged:(id)sender;
+
+- (IBAction)changeUnit:(id)sender;
+
 @end
