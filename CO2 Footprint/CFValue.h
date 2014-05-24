@@ -42,6 +42,7 @@ typedef enum {
 @property (nonatomic) NSString *bottomUnit;
 
 + (NSArray *)possibleUnitsForType:(CFUnitType)unitType;
++ (NSArray *)possibleUnitsOfSameType:(NSString *)unit index:(int *)indexRetVal;
 
 @end
 

@@ -109,6 +109,17 @@
     return @[@""];
 }
 
++ (NSArray *)possibleUnitsOfSameType:(NSString *)unit index:(int *)indexRetVal {
+    for (CFUnitType unitType=0; unitType<=UnitMoney; unitType++) {
+        NSArray *possibles = [self possibleUnitsForType:unitType];
+        if ([possibles containsObject:unit]) {
+            *indexRetVal=[possibles indexOfObject:unit];
+            return possibles;
+        }
+    }
+    return nil;
+}
+
 - (void)setValueInCurrentUnits:(double)valueInCurrentUnits {
     self.value=valueInCurrentUnits*[self.class convertFrom:self.topUnit over:self.bottomUnit];
 }

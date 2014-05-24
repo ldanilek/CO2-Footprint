@@ -85,16 +85,20 @@
     [textField resignFirstResponder];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender
 {
- if ([segue.identifier isEqualToString:@"Pick Unit"]||UIUserInterfaceIdiomPad==UI_USER_INTERFACE_IDIOM())
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    CFUnitPickerViewController *picker = segue.destinationViewController;
+    picker.delegate=self;
+    int index = 0;
+    picker.possibilities=[CFValue possibleUnitsOfSameType:sender.currentTitle index:&index];
+    picker.startingIndex=index;
+    picker.valueEditing=self.footprint.groceryBill;
+    picker.editingTop=sender==self.moneyUnitButton;
 }
-*/
+
 
 @end
