@@ -16,6 +16,7 @@ typedef enum {
     HomeHouse,
     HomeApartment,
 } HomeType;
+#define HOME_TYPES @[@"House", @"Apartment"]
 
 typedef enum {
     HeatingFuelGas,
@@ -23,6 +24,7 @@ typedef enum {
     HeatingFuelPellets,
     HeatingFuelNone,
 } HeatingFuelType;
+#define HEATING_TYPES @[@"Gas", @"Propane", @"Pellets", @"None"]
 
 typedef enum {
     DietVegan,
@@ -30,6 +32,7 @@ typedef enum {
     DietOmnivore,
     DietCarnivore
 } DietType;
+#define DIET_TYPES @[@"Vegan", @"Vegetarian", @"Omnivore", @"Carnivore"]
 
 @interface CFFootprintBrain : NSObject <NSCoding>
 

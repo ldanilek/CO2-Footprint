@@ -26,6 +26,7 @@
         if ([unit isEqualToString:@"day"]) return 7;
         if ([unit isEqualToString:@"hr"]) return 7*24;
         if ([unit isEqualToString:@"yr"]) return 0.019164956;
+        if ([unit isEqualToString:@"mo"]) return 0.22999;
     } else if ([self.distanceUnits containsObject:unit]) {
         //convert from miles
         if ([unit isEqualToString:@"mi"]) return 1;
@@ -40,8 +41,15 @@
         //to gallons
         if ([unit isEqualToString:@"gal"]) return 1;
         if ([unit isEqualToString:@"L"]) return 3.7854118;
+    } else if ([self.moneyUnits containsObject:unit]) {
+        //to dollars
+        if ([unit isEqualToString:@"$"]) return 1;
+    } else if ([self.massUnits containsObject:unit]) {
+        //to tons
+        if ([unit isEqualToString:@"ton"]) return 1;
+        if ([unit isEqualToString:@"lb"]) return 2000;
+        if ([unit isEqualToString:@"kg"]) return 907.18474;
     }
-#warning mass and money units
     [NSException raise:@"Unit does not exist" format:@"Cannot convert from unit:%@", unit];
     return 0;
 }
@@ -51,7 +59,7 @@
 }
 
 + (NSArray *)timeUnits {
-    return @[@"wk", @"yr", @"day", @"hr"];
+    return @[@"wk", @"yr", @"mo", @"day", @"hr"];
 }
 
 + (NSArray *)volumeUnits {
@@ -63,7 +71,7 @@
 }
 
 + (NSArray *)massUnits {
-    return @[@"ton", @"lbs", @"kg"];
+    return @[@"ton", @"lb", @"kg"];
 }
 + (NSArray *)moneyUnits {
     return @[@"$"];

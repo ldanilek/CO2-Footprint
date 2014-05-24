@@ -62,6 +62,53 @@
     return [self homeFootprint]+[self dietFootprint]+[self transportFootprint];
 }
 
++ (CFValue *)newBill {
+    CFValue *bill = [[CFValue alloc] initWithUnitsTop:UnitMoney bottom:UnitTime];
+    bill.topUnit=@"$";
+    bill.bottomUnit=@"mo";
+    return bill;
+}
+
+- (CFValue *)groceryBill {
+    if (!_groceryBill) {
+        _groceryBill = [self.class newBill];
+    }
+    return _groceryBill;
+}
+
+- (CFValue *)electricBill {
+    if (!_electricBill) {
+        _electricBill=[self.class newBill];
+    }
+    return _electricBill;
+}
+
+- (CFValue *)fuelBill {
+    if (!_fuelBill) {
+        _fuelBill=[self.class newBill];
+    }
+    return _electricBill;
+}
+
+- (CFValue *)vehicleFuelEfficiency {
+    if (!_vehicleFuelEfficiency) {
+        _vehicleFuelEfficiency = [[CFValue alloc] initWithUnitsTop:UnitMoney bottom:UnitTime];
+        _vehicleFuelEfficiency.topUnit=@"mi";
+        _vehicleFuelEfficiency.bottomUnit=@"gal";
+    }
+    return _vehicleFuelEfficiency;
+}
+
+- (CFValue *)vehicleMileage {
+    if (!_vehicleMileage) {
+        _vehicleMileage = [[CFValue alloc] initWithUnitsTop:UnitDistance bottom:UnitTime];
+        _vehicleMileage.topUnit=@"mi";
+        _vehicleMileage.bottomUnit=@"yr";
+    }
+    return _vehicleMileage;
+}
+
+
 #pragma mark - Storage
 
 #define HOME_TYPE @"key for home type"

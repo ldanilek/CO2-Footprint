@@ -165,20 +165,6 @@
                     <value key="contentSizeForViewInPopover" type="size" width="320" height="568"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
-                    <connections>
-                        <outlet property="efficiencyBottomUnit" destination="cls-qu-DLG" id="4T2-9r-Rnk"/>
-                        <outlet property="efficiencyLabel" destination="0Af-mM-6tq" id="Dhn-zP-fXS"/>
-                        <outlet property="efficiencySlider" destination="ifq-Vj-uSm" id="QAV-1j-Yad"/>
-                        <outlet property="efficiencyTopUnit" destination="4CW-Qe-hyg" id="aIp-Vm-Czw"/>
-                        <outlet property="picker" destination="Fra-hv-rGW" id="zkf-Ci-UqP"/>
-                        <outlet property="shareLabel" destination="ECk-Os-Xu4" id="SZJ-hy-gFA"/>
-                        <outlet property="shareStepper" destination="g9f-XE-g8S" id="Wa8-wZ-jhd"/>
-                        <outlet property="titleField" destination="Z63-pa-tsQ" id="t9n-7R-RyP"/>
-                        <outlet property="usageBottomUnit" destination="lu7-Bw-ymR" id="glc-Wf-pyr"/>
-                        <outlet property="usageLabel" destination="Eyf-h4-VkY" id="7nk-u4-hYg"/>
-                        <outlet property="usageSlider" destination="15m-Yo-oWN" id="z3P-cy-vPi"/>
-                        <outlet property="usageTopUnit" destination="jGN-fq-yLP" id="mPJ-gz-gcr"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZR-NM-A8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

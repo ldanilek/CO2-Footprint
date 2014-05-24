@@ -16,6 +16,10 @@
 
 @implementation CFTransportViewController
 
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
 - (void)picker:(CFUnitPickerViewController *)picker pickedUnit:(NSString *)unit {
     CFValue *value = picker.valueEditing;
     if (picker.editingTop) value.topUnit=unit;
