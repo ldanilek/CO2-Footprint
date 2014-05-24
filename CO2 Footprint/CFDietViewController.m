@@ -63,6 +63,7 @@
     [super viewWillAppear:animated];
     [self.dietPicker selectRow:self.footprint.diet inComponent:0 animated:NO];
     self.sharingLabel.text=[NSString stringWithFormat:@"%g", self.footprint.foodShared];
+    self.stepper.value=self.footprint.foodShared;
     [self updateUnits];
 }
 
