@@ -29,7 +29,7 @@ typedef enum {
 
 //stores a number with units
 
-@interface CFValue : NSObject <NSCoding>
+@interface CFValue : NSObject <NSCoding, NSCopying>
 
 //designated initializer
 - (instancetype)initWithUnitsTop:(CFUnitType)typeTop bottom:(CFUnitType)typeBottom;//sets units to base units

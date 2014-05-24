@@ -87,7 +87,7 @@
     if (!_fuelBill) {
         _fuelBill=[self.class newBill];
     }
-    return _electricBill;
+    return _fuelBill;
 }
 
 - (CFValue *)vehicleFuelEfficiency {
@@ -131,8 +131,8 @@
     if (self=[self init]) {
         self.homeType=[aDecoder decodeIntForKey:HOME_TYPE];
         self.heatingFuelType=[aDecoder decodeIntForKey:FUEL_TYPE];
-        self.fuelBill=[aDecoder decodeObjectForKey:FUEL_BILL];
-        self.electricBill = [aDecoder decodeObjectForKey:ELECTRIC_BILL];
+        self.fuelBill=[[aDecoder decodeObjectForKey:FUEL_BILL] copy];
+        self.electricBill = [[aDecoder decodeObjectForKey:ELECTRIC_BILL] copy];
         self.homeState=[aDecoder decodeObjectForKey:HOME_LOCATION];
         self.homeSharing=[aDecoder decodeDoubleForKey:HOME_SHARE];
         

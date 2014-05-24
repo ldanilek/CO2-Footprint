@@ -44,6 +44,7 @@
     } else if ([self.moneyUnits containsObject:unit]) {
         //to dollars
         if ([unit isEqualToString:@"$"]) return 1;
+        if ([unit isEqualToString:@"€"]) return 0.734;
     } else if ([self.massUnits containsObject:unit]) {
         //to tons
         if ([unit isEqualToString:@"ton"]) return 1;
@@ -74,7 +75,7 @@
     return @[@"ton", @"lb", @"kg"];
 }
 + (NSArray *)moneyUnits {
-    return @[@"$"];
+    return @[@"$", @"€"];
 }
 
 + (NSArray *)possibleUnitsForType:(CFUnitType)unitType {
@@ -168,6 +169,18 @@
     [aCoder encodeInteger:self.bottomUnitType forKey:BOTTOM_TYPE];
     [aCoder encodeObject:self.topUnit  forKey:TOP_UNIT];
     [aCoder encodeObject:self.bottomUnit forKey:BOTTOM_UNIT];
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    CFValue *value = [[self.class alloc] initWithUnitsTop:self.topUnitType bottom:self.bottomUnitType];
+    value.topUnit=self.topUnit;
+    value.bottomUnit=self.bottomUnit;
+    value.value=self.value;
+    return value;
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%g %@/%@", self.valueInCurrentUnits, self.topUnit, self.bottomUnit];
 }
 
 @end

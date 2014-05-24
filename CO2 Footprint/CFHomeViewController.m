@@ -16,8 +16,61 @@
 
 @implementation CFHomeViewController
 
+- (void)updateUnits {
+    self.fuelBill.text=[NSString stringWithFormat:@"%g", self.footprint.fuelBill.valueInCurrentUnits];
+    self.electricBill.text=[NSString stringWithFormat:@"%g", self.footprint.electricBill.valueInCurrentUnits];
+    [self.fuelMoneyUnitButton setTitle:self.footprint.fuelBill.topUnit forState:UIControlStateNormal];
+    [self.fuelTimeUnitButton setTitle:self.footprint.fuelBill.bottomUnit forState:UIControlStateNormal];
+    [self.electricMoneyUnitButton setTitle:self.footprint.electricBill.topUnit forState:UIControlStateNormal];
+    [self.electricTimeUnitButton setTitle:self.footprint.electricBill.bottomUnit forState:UIControlStateNormal];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.fuelTypePicker selectRow:self.footprint.heatingFuelType inComponent:0 animated:NO];
+    [self.homeTypePicker selectRow:self.footprint.homeType inComponent:0 animated:NO];
+    self.sharingLabel.text=[NSString stringWithFormat:@"%g", self.footprint.homeSharing];
+    self.stepper.value=self.footprint.homeSharing;
+    [self updateUnits];
+}
+
+- (IBAction)sharingChanged:(UIStepper *)sender {
+    self.footprint.homeSharing=sender.value;
+    self.sharingLabel.text=[NSString stringWithFormat:@"%g", self.footprint.homeSharing];
+    [self commitEdit];
+}
+
+- (IBAction)unitChange:(id)sender {
+    [self performSegueWithIdentifier:@"Pick Unit" sender:sender];
+}
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    if (pickerView==self.homeTypePicker) {
+        return HOME_TYPES.count;
+    } else if (pickerView==self.fuelTypePicker) {
+        return HEATING_TYPES.count;
+    }
+    return 0;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if (pickerView==self.homeTypePicker) {
+        return HOME_TYPES[row];
+    } else if (pickerView==self.fuelTypePicker) {
+        return HEATING_TYPES[row];
+    }
+    return nil;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if (pickerView==self.homeTypePicker) {
+        self.footprint.homeType=row;
+    } else if (pickerView==self.fuelTypePicker) {
+        self.footprint.heatingFuelType=row;
+    }
 }
 
 - (void)picker:(CFUnitPickerViewController *)picker pickedUnit:(NSString *)unit {
@@ -35,7 +88,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:self.fuelBill queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+        self.footprint.fuelBill.valueInCurrentUnits=self.fuelBill.text.doubleValue;
+        [self commitEdit];
+    }];
+    [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:self.electricBill queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+        self.footprint.electricBill.valueInCurrentUnits=self.electricBill.text.doubleValue;
+        [self commitEdit];
+    }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -49,16 +109,25 @@
     [textField resignFirstResponder];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender
 {
- if ([segue.identifier isEqualToString:@"Pick Unit"]||UIUserInterfaceIdiomPad==UI_USER_INTERFACE_IDIOM())
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    CFUnitPickerViewController *picker = segue.destinationViewController;
+    picker.delegate=self;
+    int index = 0;
+    picker.possibilities=[CFValue possibleUnitsOfSameType:sender.currentTitle index:&index];
+    picker.startingIndex=index;
+    if (sender==self.fuelMoneyUnitButton||sender==self.fuelTimeUnitButton) {
+        picker.valueEditing=self.footprint.fuelBill;
+        picker.editingTop=sender==self.fuelMoneyUnitButton;
+    } else {
+        picker.valueEditing=self.footprint.electricBill;
+        picker.editingTop=sender==self.electricMoneyUnitButton;
+    }
 }
-*/
+
 
 @end
