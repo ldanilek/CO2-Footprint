@@ -204,54 +204,46 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" id="XnT-ab-qaE">
-                                <rect key="frame" x="170" y="67" width="150" height="162"/>
+                                <rect key="frame" x="0.0" y="199" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="95y-FU-hpA" id="Owy-IC-2pX"/>
                                     <outlet property="delegate" destination="95y-FU-hpA" id="v3E-aC-83Q"/>
                                 </connections>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" id="GJ3-Lc-Hm9">
-                                <rect key="frame" x="0.0" y="67" width="162" height="162"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="95y-FU-hpA" id="urE-gH-w2w"/>
-                                    <outlet property="delegate" destination="95y-FU-hpA" id="oNq-SY-4OX"/>
-                                </connections>
-                            </pickerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People sharing:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GBW-9O-xVt">
-                                <rect key="frame" x="6" y="359" width="120" height="21"/>
+                                <rect key="frame" x="13" y="166" width="120" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" id="RH3-Wg-y8t">
-                                <rect key="frame" x="201" y="355" width="94" height="29"/>
+                                <rect key="frame" x="208" y="162" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="sharingChanged:" destination="95y-FU-hpA" eventType="valueChanged" id="taR-rA-ViQ"/>
                                 </connections>
                             </stepper>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xTG-RP-4MO">
-                                <rect key="frame" x="147" y="359" width="46" height="21"/>
+                                <rect key="frame" x="154" y="166" width="46" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fuel Bill:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DWl-2o-TDi">
-                                <rect key="frame" x="6" y="404" width="66" height="21"/>
+                                <rect key="frame" x="13" y="78" width="66" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Electric Bill:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Bw-3x-7aL">
-                                <rect key="frame" x="6" y="448" width="90" height="21"/>
+                                <rect key="frame" x="13" y="122" width="90" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="W6Y-ew-RAM">
-                                <rect key="frame" x="232" y="393" width="30" height="30"/>
+                                <rect key="frame" x="239" y="67" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="$">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -262,7 +254,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UfT-L8-URv">
-                                <rect key="frame" x="270" y="404" width="30" height="30"/>
+                                <rect key="frame" x="277" y="78" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="mo">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -273,13 +265,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="drT-es-VJh">
-                                <rect key="frame" x="257" y="394" width="12" height="42"/>
+                                <rect key="frame" x="264" y="68" width="12" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dja-jD-gg9">
-                                <rect key="frame" x="232" y="437" width="30" height="30"/>
+                                <rect key="frame" x="239" y="111" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="$">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -290,7 +282,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rh0-LF-dmD">
-                                <rect key="frame" x="270" y="448" width="30" height="30"/>
+                                <rect key="frame" x="277" y="122" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="mo">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -301,13 +293,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vWX-j7-O5w">
-                                <rect key="frame" x="257" y="438" width="12" height="42"/>
+                                <rect key="frame" x="264" y="112" width="12" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="fdi-hy-3HK">
-                                <rect key="frame" x="104" y="444" width="120" height="30"/>
+                                <rect key="frame" x="111" y="118" width="120" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -316,12 +308,12 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="LGp-ce-iLV">
-                                <rect key="frame" x="104" y="400" width="120" height="30"/>
+                                <rect key="frame" x="111" y="74" width="120" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="pmH-8v-Wek" id="QcP-5K-CE6"/>
+                                    <outlet property="delegate" destination="95y-FU-hpA" id="Pd6-j1-ArI"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -337,7 +329,6 @@
                         <outlet property="fuelMoneyUnitButton" destination="W6Y-ew-RAM" id="6Vu-t9-ju1"/>
                         <outlet property="fuelTimeUnitButton" destination="UfT-L8-URv" id="kxw-Me-2Vj"/>
                         <outlet property="fuelTypePicker" destination="XnT-ab-qaE" id="ObJ-nG-tXh"/>
-                        <outlet property="homeTypePicker" destination="GJ3-Lc-Hm9" id="Fah-sa-FzY"/>
                         <outlet property="sharingLabel" destination="xTG-RP-4MO" id="IQn-NM-OAM"/>
                         <outlet property="stepper" destination="RH3-Wg-y8t" id="jhl-Y4-HKv"/>
                         <segue destination="vIN-BP-Zyr" kind="modal" identifier="Pick Unit" modalTransitionStyle="partialCurl" id="RRa-sN-w14"/>
@@ -356,7 +347,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" id="EAi-lf-bI7">
-                                <rect key="frame" x="0.0" y="84" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="165" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Ucf-YZ-eIg" id="9RZ-AE-iTV"/>
@@ -364,14 +355,14 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery Bill:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="taH-aA-204">
-                                <rect key="frame" x="20" y="265" width="94" height="21"/>
+                                <rect key="frame" x="16" y="90" width="94" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="5dg-hs-sPV">
-                                <rect key="frame" x="122" y="261" width="111" height="30"/>
+                                <rect key="frame" x="118" y="86" width="111" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -380,7 +371,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mgN-d8-L1e">
-                                <rect key="frame" x="241" y="254" width="30" height="30"/>
+                                <rect key="frame" x="237" y="79" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="$">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -390,7 +381,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yOn-ZL-0Kq">
-                                <rect key="frame" x="279" y="265" width="30" height="30"/>
+                                <rect key="frame" x="275" y="90" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="wk">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -400,25 +391,25 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f17-pB-NO0">
-                                <rect key="frame" x="266" y="255" width="12" height="42"/>
+                                <rect key="frame" x="262" y="80" width="12" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People Sharing:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8pk-lB-9a0">
-                                <rect key="frame" x="20" y="307" width="122" height="21"/>
+                                <rect key="frame" x="16" y="132" width="122" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SQ0-R2-Iet">
-                                <rect key="frame" x="150" y="307" width="57" height="21"/>
+                                <rect key="frame" x="146" y="132" width="57" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" id="d7y-Y5-Drl">
-                                <rect key="frame" x="215" y="303" width="94" height="29"/>
+                                <rect key="frame" x="211" y="128" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="sharingChanged:" destination="Ucf-YZ-eIg" eventType="valueChanged" id="LNx-C4-1gy"/>
@@ -473,6 +464,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uWE-wT-HlX"/>
+        <segue reference="FMS-Wb-II5"/>
     </inferredMetricsTieBreakers>
 </document>
