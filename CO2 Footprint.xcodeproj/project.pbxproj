@@ -390,7 +390,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Danilek (DH36U6763S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Danilek (DH36U6763S)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -429,7 +430,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Danilek (DH36U6763S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Danilek (DH36U6763S)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -455,6 +457,7 @@
 				GCC_PREFIX_HEADER = "CO2 Footprint/CO2 Footprint-Prefix.pch";
 				INFOPLIST_FILE = "CO2 Footprint/CO2 Footprint-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "72E720E1-39F4-4462-9DF4-B66CA7D6D4B0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -468,6 +471,7 @@
 				GCC_PREFIX_HEADER = "CO2 Footprint/CO2 Footprint-Prefix.pch";
 				INFOPLIST_FILE = "CO2 Footprint/CO2 Footprint-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "72E720E1-39F4-4462-9DF4-B66CA7D6D4B0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

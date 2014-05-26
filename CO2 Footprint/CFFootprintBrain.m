@@ -39,11 +39,43 @@
 
 #pragma mark - Footprint Calculations
 
+//1 dollar per month of electricity releases 77 pounds per year
+//1 dollar per month releases 77/2000/12 tons per month
+#define ELECTRIC_TONS_PER_DOLLAR 6.4166666666/2000;
+
 - (double)homeFootprint {
-    return 0;
+    double tonsPerDollar = 0;
+    switch (self.heatingFuelType) {
+        case HeatingFuelNaturalGas:
+            tonsPerDollar = GAS_TONS_PER_$;
+            break;
+            
+        case HeatingFuelOil:
+            tonsPerDollar = OIL_TONS_PER_$;
+            break;
+            
+        case HeatingFuelPropane:
+            tonsPerDollar = PROPANE_TONS_PER_$;
+            break;
+            
+        /*case HeatingFuelPellets:
+            tonsPerDollar = PELLET_TONS_PER_$;
+            break;
+           */
+        default:
+            break;
+    }
+    double fuelFootprint = self.fuelBill.value * tonsPerDollar;//in tons/wk
+    
+    double electricityFootprint=self.electricBill.value * ELECTRIC_TONS_PER_DOLLAR;
+    
+    return fuelFootprint+electricityFootprint;
 }
 
-#define TONS_PER_GALLON_OF_GASOLINE .01
+//1 mile/gallon for 1 mi/wk releases 1062 pounds per year
+//1 gal/wk releases 1062 pounds/yr * 0.019164956 yr/wk * ton/2000 pounds
+//1 gal of gasoline releases 20.353183 tons of CO2
+#define TONS_PER_GALLON_OF_GASOLINE .0101766
 #define TONS_PER_FLIGHT .5
 
 - (double)transportFootprint {
@@ -51,7 +83,8 @@
     double milesPerWeek = self.vehicleMileage.value;
     //I want gallons per week = gallons/mile * miles/week
     double gallonsPerWeek = milesPerWeek/milesPerGallon;
-    return gallonsPerWeek*TONS_PER_GALLON_OF_GASOLINE + self.numberOfFlights/52.*TONS_PER_FLIGHT;
+    double footprint = gallonsPerWeek*TONS_PER_GALLON_OF_GASOLINE/self.carShared + self.numberOfFlights/52.*TONS_PER_FLIGHT;
+    return footprint;
 }
 
 - (double)dietFootprint {

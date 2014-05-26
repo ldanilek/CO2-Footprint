@@ -19,12 +19,12 @@ static BOOL equalObjs(id obj1, id obj2) {
 
 typedef enum {
     Unitless,
-    UnitDistance,
-    UnitEnergy,
-    UnitMass,//like tons
-    UnitTime,
-    UnitVolume,
-    UnitMoney,
+    UnitDistance,//mi
+    UnitEnergy,//J
+    UnitMass,//ton
+    UnitTime,//wk
+    UnitVolume,//gal
+    UnitMoney,//$
 } CFUnitType;
 
 //stores a number with units

@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "CFActivity.h"
+#import "CFFootprintBrain.h"
 
 @interface CO2_FootprintTests : XCTestCase
 
@@ -27,45 +27,104 @@
     [super tearDown];
 }
 
-#pragma mark - Test Activities
-
-- (void)testActivityCreation {
-    CFActivity *activity = [[CFActivity alloc] initWithType:ActivityTransportation];
-    XCTAssertNotNil(activity, @"activity should not be nil");
-    XCTAssertEqual(activity.type, ActivityTransportation, @"type is set on init");
-}
-
-//also checks activity editing and comparison
-- (void)testActivityStorage {
-    CFActivity *activity = [[CFActivity alloc] initWithType:ActivityTransportation];
-    activity.title=@"Daily Commute";
-    activity.subtype=TransportationCar;
-    activity.brand=@"Honda";
-    activity.model=@"Pilot";
-    activity.efficiency=20;
-    activity.usage=50;
-    activity.sharingCount=2;
-    
-    NSData *archive = [NSKeyedArchiver archivedDataWithRootObject:activity];
-    CFActivity *resurected = [NSKeyedUnarchiver unarchiveObjectWithData:archive];
-    
-    XCTAssertNotNil(resurected, @"accessed activity should exist");
-    XCTAssertEqual(resurected.type, activity.type, @"accessed activity should retain type");
-    XCTAssertEqualObjects(activity, resurected, @"activity and resurected activity should be the same");//this also checks isEqual:
-    XCTAssertNoThrow(NSLog(@"Activity has been recreated:\n%@", activity), @"Check description");
-}
+#pragma mark - Test Units
 
 - (void)testUnits {
-    CFActivity *activity = [[CFActivity alloc] initWithType:ActivityTransportation];
-    activity.units=[@[@"km", @"yr", @"km", @"L"] mutableCopy];
-    activity.usageInCurrentUnits=10;
-    activity.efficiencyInCurrentUnits=20;
-    XCTAssertEqualWithAccuracy(activity.usageInCurrentUnits, 10, .001, @"Convert to and fro");
-    XCTAssertEqualWithAccuracy(activity.usage, .1192, .001, @"store as mi/wk");
-    XCTAssertEqualWithAccuracy(activity.efficiencyInCurrentUnits, 20, .001, @"convert to and fro efficiency");
-    XCTAssertEqualWithAccuracy(47.04, activity.efficiency, .01, @"store as mi/gal");
+    CFValue *value = [[CFValue alloc] initWithUnitsTop:UnitDistance bottom:UnitTime];
+    value.topUnit=@"km";
+    value.bottomUnit=@"hr";
+    value.valueInCurrentUnits=20;
+    XCTAssertEqualWithAccuracy(value.valueInCurrentUnits, 20, .001, @"convert to and fro");
+    XCTAssertEqualWithAccuracy(2088, value.value, 1, @"store as mi/wk");
 }
 
 #pragma mark - Test Specific Footprints
+
+- (void)testCarFootprint {
+    CFValue *footprintExpected = [[CFValue alloc] initWithUnitsTop:UnitMass bottom:UnitTime];
+    footprintExpected.topUnit=@"lb";
+    footprintExpected.bottomUnit=@"yr";
+    
+    CFFootprintBrain *footprint = [[CFFootprintBrain alloc] init];
+    footprint.vehicleFuelEfficiency.valueInCurrentUnits=1;
+    footprint.vehicleMileage.valueInCurrentUnits=1;
+    footprintExpected.valueInCurrentUnits=20;
+    XCTAssertEqualWithAccuracy(footprintExpected.value, [footprint transportFootprint], .0001, @"Simple vehicle footprint");
+    
+    footprint.vehicleFuelEfficiency.valueInCurrentUnits=20;//mi/gal
+    footprint.vehicleMileage.valueInCurrentUnits=12500;//mi/yr
+    
+    footprintExpected.valueInCurrentUnits=12763;
+    XCTAssertEqualWithAccuracy(footprintExpected.value, [footprint transportFootprint], .1, @"Footprint due to vehicle");
+}
+
+- (void)testPlaneFootprint {
+    
+}
+
+- (void)testElectricFootprint {
+    CFFootprintBrain *footprint = [[CFFootprintBrain alloc] init];
+    footprint.electricBill.valueInCurrentUnits=43;
+    CFValue *footprintExpected = [[CFValue alloc] initWithUnitsTop:UnitMass bottom:UnitTime];
+    footprintExpected.topUnit=@"lb";
+    footprintExpected.bottomUnit=@"yr";
+    footprintExpected.valueInCurrentUnits=3295;
+    XCTAssertEqualWithAccuracy([footprint homeFootprint], footprintExpected.value, .1, @"Electric bill estimate footprint");
+    
+    footprint.electricBill.valueInCurrentUnits=150;
+    footprintExpected.valueInCurrentUnits=11493;
+    XCTAssertEqualWithAccuracy([footprint homeFootprint], footprintExpected.value, .1, @"electric footprint");
+}
+
+- (void)testNaturalGasFootprint {
+    CFValue *footprintExpected = [[CFValue alloc] initWithUnitsTop:UnitMass bottom:UnitTime];
+    footprintExpected.topUnit=@"lb";
+    footprintExpected.bottomUnit=@"yr";
+    
+    CFFootprintBrain *footprint = [[CFFootprintBrain alloc] init];
+    footprint.heatingFuelType=HeatingFuelNaturalGas;
+    footprint.fuelBill.valueInCurrentUnits = 24;
+    
+    footprintExpected.valueInCurrentUnits=3086;
+    XCTAssertEqualWithAccuracy([footprint homeFootprint], footprintExpected.value, .1, @"Natural gas footprint");
+}
+
+- (void)testOilFootprint {
+    CFValue *footprintExpected = [[CFValue alloc] initWithUnitsTop:UnitMass bottom:UnitTime];
+    footprintExpected.topUnit=@"lb";
+    footprintExpected.bottomUnit=@"yr";
+    
+    CFFootprintBrain *footprint = [[CFFootprintBrain alloc] init];
+    footprint.heatingFuelType=HeatingFuelOil;
+    footprint.fuelBill.valueInCurrentUnits = 67;
+    
+    footprintExpected.valueInCurrentUnits=6492;
+    XCTAssertEqualWithAccuracy([footprint homeFootprint], footprintExpected.value, .1, @"Oil footprint");
+}
+
+- (void)testPropaneFootprint {
+    CFValue *footprintExpected = [[CFValue alloc] initWithUnitsTop:UnitMass bottom:UnitTime];
+    footprintExpected.topUnit=@"lb";
+    footprintExpected.bottomUnit=@"yr";
+    
+    CFFootprintBrain *footprint = [[CFFootprintBrain alloc] init];
+    footprint.heatingFuelType=HeatingFuelPropane;
+    footprint.fuelBill.valueInCurrentUnits = 38;
+    
+    footprintExpected.valueInCurrentUnits=2188;
+    XCTAssertEqualWithAccuracy([footprint homeFootprint], footprintExpected.value, .1, @"Propane footprint");
+}
+
+- (void)testPelletFootprint {
+    CFValue *footprintExpected = [[CFValue alloc] initWithUnitsTop:UnitMass bottom:UnitTime];
+    footprintExpected.topUnit=@"lb";
+    footprintExpected.bottomUnit=@"yr";
+    
+    CFFootprintBrain *footprint = [[CFFootprintBrain alloc] init];
+    footprint.heatingFuelType=HeatingFuelOil;
+    footprint.fuelBill.valueInCurrentUnits = 67;
+    
+    footprintExpected.valueInCurrentUnits=6492;
+}
 
 @end

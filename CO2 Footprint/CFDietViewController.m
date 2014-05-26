@@ -35,7 +35,7 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    self.footprint.diet=row;
+    self.footprint.diet=(int)row;
     [self commitEdit];
 }
 

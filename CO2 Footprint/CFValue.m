@@ -114,7 +114,7 @@
     for (CFUnitType unitType=0; unitType<=UnitMoney; unitType++) {
         NSArray *possibles = [self possibleUnitsForType:unitType];
         if ([possibles containsObject:unit]) {
-            *indexRetVal=[possibles indexOfObject:unit];
+            *indexRetVal=(int)[possibles indexOfObject:unit];
             return possibles;
         }
     }
@@ -155,7 +155,7 @@
 #define BOTTOM_UNIT @"key for bottom unit"
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    if (self=[self initWithUnitsTop:[aDecoder decodeIntegerForKey:TOP_TYPE] bottom:[aDecoder decodeIntegerForKey:BOTTOM_TYPE]]) {
+    if (self=[self initWithUnitsTop:(int)[aDecoder decodeIntegerForKey:TOP_TYPE] bottom:(int)[aDecoder decodeIntegerForKey:BOTTOM_TYPE]]) {
         self.value=[aDecoder decodeDoubleForKey:VALUE_KEY];
         self.topUnit = [aDecoder decodeObjectForKey:TOP_UNIT];
         self.bottomUnit = [aDecoder decodeObjectForKey:BOTTOM_UNIT];

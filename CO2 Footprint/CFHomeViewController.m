@@ -67,9 +67,9 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (pickerView==self.homeTypePicker) {
-        self.footprint.homeType=row;
+        self.footprint.homeType=(int)row;
     } else if (pickerView==self.fuelTypePicker) {
-        self.footprint.heatingFuelType=row;
+        self.footprint.heatingFuelType=(int)row;
     }
 }
 
