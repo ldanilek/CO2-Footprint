@@ -83,7 +83,10 @@
             if (![self usePopovers]) cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         } else {
             //CO2 Footprint
-            cell.textLabel.text=[NSString stringWithFormat:@"Footprint: %g tons/year", self.brain.footprint*52];
+            CFValue *footprint = [[CFValue alloc] initWithUnitsTop:UnitVolume bottom:UnitTime];
+            footprint.bottomUnit=@"yr";
+            footprint.value=self.brain.footprint;
+            cell.textLabel.text=[NSString stringWithFormat:@"Footprint: %g tons/year", footprint.valueInCurrentUnits];
         }
     }
     return cell;

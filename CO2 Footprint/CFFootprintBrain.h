@@ -22,24 +22,28 @@ typedef enum {
 #define OIL_TONS_PER_$ 8.0833333/2000
 #define PROPANE_TONS_PER_$ 4.8333333/2000
 
-#define PELLET_TONS_PER_$ 8.0833333/2000
+//25kg of C per GJ * 17MJ per kg of fuel according to http://www.biomassenergycentre.org.uk/portal/page?_pageid=75,163182&_dad=portal&_schema=PORTAL = .425 kg of C per kg of Fuel = .000425 tons per kg of Fuel
+//247$ per ton according to http://publicservice.vermont.gov/sites/psd/files/MAY-2014%20Fuel%20Price%20Report.pdf = $.2723 per kg of fuel
+//total 3.12156 pounds of CO2 per $ of Fuel
+#define PELLET_TONS_PER_$ 3.12156/2000
 
 typedef enum {
     HeatingFuelNaturalGas,//for one dollar, release 10.75 pounds of CO2
     HeatingFuelOil,//for one dollar, release 8.08333 pounds of CO2
     HeatingFuelPropane,//for one dollar, release 4.83333 pounds of CO2
-    //HeatingFuelPellets,
+    HeatingFuelPellets,
     HeatingFuelNone,//release no CO2
 } HeatingFuelType;
-#define HEATING_TYPES @[@"Natural Gas", @"Oil", @"Propane",/* @"Pellets",*/ @"None"]
+#define HEATING_TYPES @[@"Natural Gas", @"Oil", @"Propane", @"Pellets", @"None"]
 
 typedef enum {
     DietVegan,
     DietVegetarian,
-    DietOmnivore,
-    DietCarnivore
+    DietNoBeef,
+    DietAverage,
+    DietMeatLover
 } DietType;
-#define DIET_TYPES @[@"Vegan", @"Vegetarian", @"Omnivore", @"Carnivore"]
+#define DIET_TYPES @[@"Vegan", @"Vegetarian", @"No Beef", @"Average", @"Meat Lover"]
 
 //data from http://www.epa.gov/climatechange/ghgemissions/ind-calculator.html#c=transportation&p=reduceOnTheRoad&m=calc_currentEmissions
 

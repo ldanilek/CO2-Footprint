@@ -58,10 +58,10 @@
             tonsPerDollar = PROPANE_TONS_PER_$;
             break;
             
-        /*case HeatingFuelPellets:
+        case HeatingFuelPellets:
             tonsPerDollar = PELLET_TONS_PER_$;
             break;
-           */
+           
         default:
             break;
     }
@@ -88,7 +88,36 @@
 }
 
 - (double)dietFootprint {
-    return 0;
+    double tonsPerYear = 0;
+    switch (self.diet) {
+        case DietMeatLover:
+            tonsPerYear=3.3;
+            break;
+            
+        case DietAverage:
+            tonsPerYear=2.5;
+            break;
+            
+        case DietNoBeef:
+            tonsPerYear=1.9;
+            break;
+            
+        case DietVegetarian:
+            tonsPerYear=1.7;
+            break;
+            
+        case DietVegan:
+            tonsPerYear=1.5;
+            break;
+            
+        default:
+            break;
+    }
+    CFValue *perYear = [[CFValue alloc] initWithUnitsTop:UnitVolume bottom:UnitTime];
+    perYear.topUnit=@"ton";
+    perYear.bottomUnit=@"yr";
+    perYear.valueInCurrentUnits=tonsPerYear;
+    return perYear.value;
 }
 
 - (double)footprint {
