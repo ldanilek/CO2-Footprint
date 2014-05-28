@@ -28,7 +28,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.fuelTypePicker selectRow:self.footprint.heatingFuelType inComponent:0 animated:NO];
-    [self.homeTypePicker selectRow:self.footprint.homeType inComponent:0 animated:NO];
+    //[self.homeTypePicker selectRow:self.footprint.homeType inComponent:0 animated:NO];
     self.sharingLabel.text=[NSString stringWithFormat:@"%g", self.footprint.homeSharing];
     self.stepper.value=self.footprint.homeSharing;
     [self updateUnits];
@@ -67,7 +67,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (pickerView==self.homeTypePicker) {
-        self.footprint.homeType=(int)row;
+        //self.footprint.homeType=(int)row;
     } else if (pickerView==self.fuelTypePicker) {
         self.footprint.heatingFuelType=(int)row;
     }

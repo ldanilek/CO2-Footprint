@@ -60,9 +60,9 @@ typedef enum {
 //no more individual activities
 //just the three categories: Home, Transportation, and Diet
 #pragma mark - Home
-@property (nonatomic) HomeType homeType;
+//@property (nonatomic) HomeType homeType;
 @property (nonatomic) HeatingFuelType heatingFuelType;
-@property (nonatomic, strong) NSString *homeState;
+//@property (nonatomic, strong) NSString *homeState;
 //all bills are default $/mo
 @property (nonatomic, strong) CFValue *fuelBill;
 @property (nonatomic, strong) CFValue *electricBill;
@@ -73,7 +73,10 @@ typedef enum {
 #pragma mark - Transportation
 @property (nonatomic, strong) CFValue *vehicleFuelEfficiency;//default miles/gal
 @property (nonatomic, strong) CFValue *vehicleMileage;//default miles/yr
-@property (nonatomic) int numberOfFlights;//per year
+//round trips
+@property (nonatomic) int shortFlights;//two hours each way
+@property (nonatomic) int mediumFlights;//four hours each way
+@property (nonatomic) int longFlights;//more
 @property (nonatomic) double carShared;
 
 - (double)transportFootprint;

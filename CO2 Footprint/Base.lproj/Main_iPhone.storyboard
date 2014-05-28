@@ -61,26 +61,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flights per year:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EqV-0m-PcV">
-                                <rect key="frame" x="20" y="250" width="123" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2hr Flights per year:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EqV-0m-PcV">
+                                <rect key="frame" x="20" y="213" width="153" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People Sharing:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vcp-8r-h9T">
-                                <rect key="frame" x="20" y="213" width="122" height="21"/>
+                                <rect key="frame" x="20" y="176" width="122" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P05-rR-Qjo">
-                                <rect key="frame" x="151" y="213" width="64" height="21"/>
+                                <rect key="frame" x="151" y="176" width="64" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LT2-yp-DaP">
-                                <rect key="frame" x="151" y="250" width="64" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LT2-yp-DaP">
+                                <rect key="frame" x="174" y="213" width="41" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -160,14 +160,52 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="IRA-mb-ZV2">
-                                <rect key="frame" x="217" y="244" width="94" height="29"/>
+                                <rect key="frame" x="217" y="207" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="flightsChanged:" destination="pQF-ab-vdh" eventType="valueChanged" id="otj-of-2qg"/>
                                 </connections>
                             </stepper>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4hr Flights per year:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dBz-es-BAt">
+                                <rect key="frame" x="20" y="248" width="153" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a0b-Kh-D8Q">
+                                <rect key="frame" x="174" y="248" width="41" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="kgC-xZ-nAT">
+                                <rect key="frame" x="217" y="242" width="94" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="flightsChanged:" destination="pQF-ab-vdh" eventType="valueChanged" id="JLj-6l-JaY"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4+hr Flights per year:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2fT-JD-oKQ">
+                                <rect key="frame" x="20" y="285" width="163" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="43v-ys-sKb">
+                                <rect key="frame" x="185" y="285" width="30" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="swd-bo-jji">
+                                <rect key="frame" x="217" y="279" width="94" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="flightsChanged:" destination="pQF-ab-vdh" eventType="valueChanged" id="WZU-AC-hr0"/>
+                                </connections>
+                            </stepper>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" id="nj7-EE-mMZ">
-                                <rect key="frame" x="217" y="207" width="94" height="29"/>
+                                <rect key="frame" x="217" y="170" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="sharingChanged:" destination="pQF-ab-vdh" eventType="valueChanged" id="O0P-Vt-zsd"/>
@@ -181,13 +219,17 @@
                         <outlet property="efficiency" destination="MFo-x0-TSo" id="cBf-AT-frm"/>
                         <outlet property="efficiencyBottom" destination="wL6-oL-Mpr" id="xqV-hD-aBn"/>
                         <outlet property="efficiencyTop" destination="T2N-9r-F9n" id="LnY-ho-jZy"/>
-                        <outlet property="flightsStepper" destination="IRA-mb-ZV2" id="DJM-vT-zfp"/>
+                        <outlet property="longFlightsStepper" destination="swd-bo-jji" id="IAZ-U6-ybU"/>
+                        <outlet property="mediumFlightsStepper" destination="kgC-xZ-nAT" id="EdU-fN-xPh"/>
                         <outlet property="mileage" destination="CXM-7f-5c4" id="PFV-eE-ZHM"/>
                         <outlet property="mileageBottom" destination="kaR-tw-1yE" id="9RT-8k-NWz"/>
                         <outlet property="mileageTop" destination="dSh-pa-KOl" id="fXv-AF-Zhi"/>
-                        <outlet property="numberOfFlights" destination="LT2-yp-DaP" id="sGy-Gr-0UJ"/>
+                        <outlet property="numberOfLongFlights" destination="43v-ys-sKb" id="a9n-Ff-Lsc"/>
+                        <outlet property="numberOfMediumFlights" destination="a0b-Kh-D8Q" id="AvY-A3-kjQ"/>
+                        <outlet property="numberOfShortFlights" destination="LT2-yp-DaP" id="eMO-ih-UJv"/>
                         <outlet property="sharing" destination="P05-rR-Qjo" id="KcZ-mv-1rw"/>
                         <outlet property="sharingStepper" destination="nj7-EE-mMZ" id="Ejm-p1-zaO"/>
+                        <outlet property="shortFlightsStepper" destination="IRA-mb-ZV2" id="V9y-Zt-TEG"/>
                         <segue destination="vIN-BP-Zyr" kind="modal" identifier="Pick Unit" modalTransitionStyle="partialCurl" id="uWE-wT-HlX"/>
                     </connections>
                 </viewController>
@@ -398,6 +440,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="FMS-Wb-II5"/>
+        <segue reference="uWE-wT-HlX"/>
     </inferredMetricsTieBreakers>
 </document>

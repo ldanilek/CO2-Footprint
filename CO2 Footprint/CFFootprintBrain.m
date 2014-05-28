@@ -76,18 +76,35 @@
 //1 gal/wk releases 1062 pounds/yr * 0.019164956 yr/wk * ton/2000 pounds
 //1 gal of gasoline releases 20.353183 tons of CO2
 #define TONS_PER_GALLON_OF_GASOLINE .0101766
-#define TONS_PER_FLIGHT .5
+
+#define TONS_PER_SHORT_FLIGHT .25
+#define TONS_PER_MEDIUM_FLIGHT 1.25/2
+#define TONS_PER_LONG_FLIGHT 1.
 
 - (double)transportFootprint {
     double milesPerGallon = self.vehicleFuelEfficiency.value;
     double milesPerWeek = self.vehicleMileage.value;
     //I want gallons per week = gallons/mile * miles/week
     double gallonsPerWeek = milesPerWeek/milesPerGallon;
-    double footprint = gallonsPerWeek*TONS_PER_GALLON_OF_GASOLINE/self.carShared + self.numberOfFlights/52.*TONS_PER_FLIGHT;
+    
+    CFValue *converter = [[CFValue alloc] initWithUnitsTop:UnitMass bottom:UnitTime];
+    converter.topUnit=@"ton";
+    converter.bottomUnit=@"yr";
+    
+    double plane=0;
+    converter.valueInCurrentUnits=self.shortFlights*TONS_PER_SHORT_FLIGHT;
+    plane += converter.value;
+    converter.valueInCurrentUnits=self.mediumFlights*TONS_PER_MEDIUM_FLIGHT;
+    plane += converter.value;
+    converter.valueInCurrentUnits=self.longFlights*TONS_PER_LONG_FLIGHT;
+    plane += converter.value;
+    
+    double footprint = gallonsPerWeek*TONS_PER_GALLON_OF_GASOLINE/self.carShared + plane;
     return footprint;
 }
 
 - (double)dietFootprint {
+    //http://shrinkthatfootprint.com/food-carbon-footprint-diet
     double tonsPerYear = 0;
     switch (self.diet) {
         case DietMeatLover:
@@ -157,6 +174,7 @@
         _vehicleFuelEfficiency = [[CFValue alloc] initWithUnitsTop:UnitMoney bottom:UnitTime];
         _vehicleFuelEfficiency.topUnit=@"mi";
         _vehicleFuelEfficiency.bottomUnit=@"gal";
+        _vehicleFuelEfficiency.valueInCurrentUnits=20;
     }
     return _vehicleFuelEfficiency;
 }
@@ -182,25 +200,36 @@
 
 #define CAR_EFFICIENCY @"key for efficiency of car fuel"
 #define CAR_MILEAGE @"key for mileage of car"
-#define FLIGHTS @"key for number of flights"
+#define FLIGHTS_S @"key for number of short flights"
+#define FLIGHTS_M @"key for number of medium flights"
+#define FLIGHTS_L @"key for number of long flights"
 #define CAR_SHARE @"key for sharing car"
 
 #define DIET_TYPE @"key for type of diet"
 #define GROCERY_BILL @"key for cost of groceries"
 #define FOOD_SHARE @"key for sharing food"
 
+- (instancetype)init {
+    if (self=[super init]) {
+        self.diet=DietAverage;
+    }
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self=[self init]) {
-        self.homeType=[aDecoder decodeIntForKey:HOME_TYPE];
+        //self.homeType=[aDecoder decodeIntForKey:HOME_TYPE];
         self.heatingFuelType=[aDecoder decodeIntForKey:FUEL_TYPE];
         self.fuelBill=[[aDecoder decodeObjectForKey:FUEL_BILL] copy];
         self.electricBill = [[aDecoder decodeObjectForKey:ELECTRIC_BILL] copy];
-        self.homeState=[aDecoder decodeObjectForKey:HOME_LOCATION];
+        //self.homeState=[aDecoder decodeObjectForKey:HOME_LOCATION];
         self.homeSharing=[aDecoder decodeDoubleForKey:HOME_SHARE];
         
         self.vehicleFuelEfficiency=[aDecoder decodeObjectForKey:CAR_EFFICIENCY];
         self.vehicleMileage = [aDecoder decodeObjectForKey:CAR_MILEAGE];
-        self.numberOfFlights=[aDecoder decodeIntForKey:FLIGHTS];
+        self.shortFlights=[aDecoder decodeIntForKey:FLIGHTS_S];
+        self.mediumFlights=[aDecoder decodeIntForKey:FLIGHTS_M];
+        self.longFlights=[aDecoder decodeIntForKey:FLIGHTS_L];
         self.carShared=[aDecoder decodeDoubleForKey:CAR_SHARE];
         
         self.diet=[aDecoder decodeIntForKey:DIET_TYPE];
@@ -212,15 +241,17 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.fuelBill forKey:FUEL_BILL];
-    [aCoder encodeInteger:self.homeType forKey:HOME_TYPE];
+    //[aCoder encodeInteger:self.homeType forKey:HOME_TYPE];
     [aCoder encodeInteger:self.heatingFuelType forKey:FUEL_TYPE];
     [aCoder encodeObject:self.electricBill forKey:ELECTRIC_BILL];
-    [aCoder encodeObject:self.homeState forKey:HOME_LOCATION];
+    //[aCoder encodeObject:self.homeState forKey:HOME_LOCATION];
     [aCoder encodeDouble:self.homeSharing forKey:HOME_SHARE];
     
     [aCoder encodeObject:self.vehicleFuelEfficiency forKey:CAR_EFFICIENCY];
     [aCoder encodeObject:self.vehicleMileage forKey:CAR_MILEAGE];
-    [aCoder encodeInteger:self.numberOfFlights forKey:FLIGHTS];
+    [aCoder encodeInteger:self.shortFlights forKey:FLIGHTS_S];
+    [aCoder encodeInteger:self.mediumFlights forKey:FLIGHTS_M];
+    [aCoder encodeInteger:self.longFlights forKey:FLIGHTS_L];
     [aCoder encodeDouble:self.carShared forKey:CAR_SHARE];
     
     [aCoder encodeObject:self.groceryBill forKey:GROCERY_BILL];

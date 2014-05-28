@@ -34,8 +34,12 @@
 }
 
 - (void)flightsChanged:(UIStepper *)sender {
-    self.footprint.numberOfFlights=sender.value;
-    self.numberOfFlights.text=[NSString stringWithFormat:@"%d", self.footprint.numberOfFlights];
+    if (sender==self.shortFlightsStepper) self.footprint.shortFlights = sender.value;
+    if (sender==self.mediumFlightsStepper) self.footprint.mediumFlights=sender.value;
+    if (sender==self.longFlightsStepper) self.footprint.longFlights = sender.value;
+    self.numberOfShortFlights.text=[NSString stringWithFormat:@"%d", self.footprint.shortFlights];
+    self.numberOfMediumFlights.text=[NSString stringWithFormat:@"%d", self.footprint.mediumFlights];
+    self.numberOfLongFlights.text=[NSString stringWithFormat:@"%d", self.footprint.longFlights];
     [self commitEdit];
 }
 
@@ -67,8 +71,12 @@
     [super viewWillAppear:animated];
     self.sharing.text=[NSString stringWithFormat:@"%g", self.footprint.carShared];
     self.sharingStepper.value=self.footprint.carShared;
-    self.numberOfFlights.text=[NSString stringWithFormat:@"%d", self.footprint.numberOfFlights];
-    self.flightsStepper.value=self.footprint.numberOfFlights;
+    self.numberOfShortFlights.text=[NSString stringWithFormat:@"%d", self.footprint.shortFlights];
+    self.numberOfMediumFlights.text=[NSString stringWithFormat:@"%d", self.footprint.mediumFlights];
+    self.numberOfLongFlights.text=[NSString stringWithFormat:@"%d", self.footprint.longFlights];
+    self.shortFlightsStepper.value=self.footprint.shortFlights;
+    self.mediumFlightsStepper.value=self.footprint.mediumFlights;
+    self.longFlightsStepper.value=self.footprint.longFlights;
     [self updateUnits];
 }
 
