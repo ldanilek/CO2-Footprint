@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+//mainly just a UIWebView (loaded locally?)
+
 @interface CFExplanationViewController : UIViewController
+
+@property (nonatomic, weak) IBOutlet UIWebView *webview;
 
 @end

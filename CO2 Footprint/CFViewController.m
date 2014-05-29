@@ -101,9 +101,9 @@
         [self editFromTableView:tableView indexPath:indexPath];
     } else {
         NSString *identifier = @"Explanation";
-        if (indexPath.row==1) {
+        if (indexPath.row==2) {
             identifier=@"Extrapolation";
-        } else if (indexPath.row==2) {
+        } else if (indexPath.row==3) {
             identifier=@"Improvements";
         }
         if ([self usePopovers]) {

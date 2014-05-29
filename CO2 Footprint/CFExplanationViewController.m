@@ -8,16 +8,24 @@
 
 #import "CFExplanationViewController.h"
 
-@interface CFExplanationViewController ()
+@interface CFExplanationViewController () <UIWebViewDelegate>
 
 @end
 
 @implementation CFExplanationViewController
 
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    self.webview.hidden=NO;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSError *error;
+    NSString *html = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Explanation" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error];
+    [self.webview loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
+    self.webview.hidden=YES;
+    self.webview.delegate=self;
 }
 
 - (void)didReceiveMemoryWarning
