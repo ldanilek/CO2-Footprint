@@ -34,11 +34,59 @@
                         <segue destination="95y-FU-hpA" kind="push" identifier="Edit Home" id="UEa-xU-ZXn"/>
                         <segue destination="Ucf-YZ-eIg" kind="push" identifier="Edit Diet" id="7XU-8u-CAs"/>
                         <segue destination="pQF-ab-vdh" kind="push" identifier="Edit Transport" id="MJ1-Jg-Vl1"/>
+                        <segue destination="bg5-jd-hXB" kind="push" identifier="Explanation" id="KmI-5f-u2N"/>
+                        <segue destination="rY8-9g-p4b" kind="push" identifier="Extrapolation" id="9ED-cu-Kzu"/>
+                        <segue destination="Cep-bW-eMs" kind="push" identifier="Improvements" id="KT5-VH-RVV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voH-Pw-IZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="16" y="-175"/>
+        </scene>
+        <!--Explanation View Controller-->
+        <scene sceneID="JDg-5m-CwI">
+            <objects>
+                <viewController storyboardIdentifier="Explanation" id="bg5-jd-hXB" customClass="CFExplanationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aYT-Rc-890">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HEW-7i-Rgd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="isM-5y-gVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="559" y="1108"/>
+        </scene>
+        <!--Extrapolation View Controller-->
+        <scene sceneID="aSN-pO-Gye">
+            <objects>
+                <viewController id="rY8-9g-p4b" customClass="CFExtrapolationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tU6-Hp-7H5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YVv-ef-AbQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dn3-Bz-b7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="559" y="1736"/>
+        </scene>
+        <!--Improvements View Controller-->
+        <scene sceneID="xSN-mw-ClL">
+            <objects>
+                <viewController id="Cep-bW-eMs" customClass="CFImprovementsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9aQ-cN-CVb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hnx-nj-3lb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LYp-eY-6MX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="559" y="2346"/>
         </scene>
         <!--Transport View Controller - Transportation-->
         <scene sceneID="EA1-7z-pm0">

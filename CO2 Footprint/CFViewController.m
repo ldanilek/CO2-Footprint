@@ -97,7 +97,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self editFromTableView:tableView indexPath:indexPath];
+    if (indexPath.section) {
+        [self editFromTableView:tableView indexPath:indexPath];
+    } else {
+        NSString *identifier = @"Explanation";
+        if (indexPath.row==1) {
+            identifier=@"Extrapolation";
+        } else if (indexPath.row==2) {
+            identifier=@"Improvements";
+        }
+        if ([self usePopovers]) {
+            [self presentViewInPopover:identifier fromTableView:tableView indexPath:indexPath];
+        } else {
+            [self performSegueWithIdentifier:identifier sender:indexPath];
+        }
+    }
     if (![self usePopovers])[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -116,15 +130,21 @@
         identifier=@"Edit Diet";
     }
     if ([self usePopovers]) {
-        CFHomeViewController *editor = [[self storyboard] instantiateViewControllerWithIdentifier:identifier];
-        editor.footprint=self.brain;
-        self.popover = [[UIPopoverController alloc] initWithContentViewController:editor];
-        CGRect rect = [tableView cellForRowAtIndexPath:indexPath].frame;
-        [self.popover presentPopoverFromRect:rect inView:tableView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        self.popover.delegate=self;
+        [self presentViewInPopover:identifier fromTableView:tableView indexPath:indexPath];
     } else {
         [self performSegueWithIdentifier:identifier sender:indexPath];
     }
+}
+
+- (void)presentViewInPopover:(NSString *)storyboardId fromTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+    UIViewController *viewController = [[self storyboard] instantiateViewControllerWithIdentifier:storyboardId];
+    if ([viewController respondsToSelector:@selector(setFootprint:)]) {
+        [(id)viewController setFootprint:self.brain];
+    }
+    self.popover = [[UIPopoverController alloc] initWithContentViewController:viewController];
+    CGRect rect = [tableView cellForRowAtIndexPath:indexPath].frame;
+    [self.popover presentPopoverFromRect:rect inView:tableView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    self.popover.delegate=self;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

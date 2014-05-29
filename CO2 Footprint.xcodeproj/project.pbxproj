@@ -28,6 +28,9 @@
 		9B9141D8191AA7D700D30448 /* DesignSpecs.md in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141D7191AA7D700D30448 /* DesignSpecs.md */; };
 		9B9141DA191AE56A00D30448 /* testSpecs.md in Resources */ = {isa = PBXBuildFile; fileRef = 9B9141D9191AE56A00D30448 /* testSpecs.md */; };
 		9B9141DE191AE65400D30448 /* CFFootprintBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9141DD191AE65400D30448 /* CFFootprintBrain.m */; };
+		9BD297071936CCA800E14192 /* CFExplanationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD297061936CCA800E14192 /* CFExplanationViewController.m */; };
+		9BD2970A1936CCB800E14192 /* CFExtrapolationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD297091936CCB800E14192 /* CFExtrapolationViewController.m */; };
+		9BD2970D1936CCC600E14192 /* CFImprovementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2970C1936CCC600E14192 /* CFImprovementsViewController.m */; };
 		9BE410FD192937EF003DBBFA /* CFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE410FC192937EF003DBBFA /* CFValue.m */; };
 		9BE410FE192937EF003DBBFA /* CFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE410FC192937EF003DBBFA /* CFValue.m */; };
 		9BE4110119294EDB003DBBFA /* CFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE4110019294EDB003DBBFA /* CFHomeViewController.m */; };
@@ -73,6 +76,12 @@
 		9B9141D9191AE56A00D30448 /* testSpecs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testSpecs.md; sourceTree = "<group>"; };
 		9B9141DC191AE65400D30448 /* CFFootprintBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFFootprintBrain.h; sourceTree = "<group>"; };
 		9B9141DD191AE65400D30448 /* CFFootprintBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFFootprintBrain.m; sourceTree = "<group>"; };
+		9BD297051936CCA800E14192 /* CFExplanationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFExplanationViewController.h; sourceTree = "<group>"; };
+		9BD297061936CCA800E14192 /* CFExplanationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFExplanationViewController.m; sourceTree = "<group>"; };
+		9BD297081936CCB800E14192 /* CFExtrapolationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFExtrapolationViewController.h; sourceTree = "<group>"; };
+		9BD297091936CCB800E14192 /* CFExtrapolationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFExtrapolationViewController.m; sourceTree = "<group>"; };
+		9BD2970B1936CCC600E14192 /* CFImprovementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFImprovementsViewController.h; sourceTree = "<group>"; };
+		9BD2970C1936CCC600E14192 /* CFImprovementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFImprovementsViewController.m; sourceTree = "<group>"; };
 		9BE410FB192937EF003DBBFA /* CFValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFValue.h; sourceTree = "<group>"; };
 		9BE410FC192937EF003DBBFA /* CFValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFValue.m; sourceTree = "<group>"; };
 		9BE410FF19294EDB003DBBFA /* CFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFHomeViewController.h; sourceTree = "<group>"; };
@@ -146,12 +155,8 @@
 				9B9141B2191AA26700D30448 /* Main_iPad.storyboard */,
 				9B9141B5191AA26700D30448 /* CFViewController.h */,
 				9B9141B6191AA26700D30448 /* CFViewController.m */,
-				9BE410FF19294EDB003DBBFA /* CFHomeViewController.h */,
-				9BE4110019294EDB003DBBFA /* CFHomeViewController.m */,
-				9BE4110219294EEC003DBBFA /* CFTransportViewController.h */,
-				9BE4110319294EEC003DBBFA /* CFTransportViewController.m */,
-				9BE4110519294EF8003DBBFA /* CFDietViewController.h */,
-				9BE4110619294EF8003DBBFA /* CFDietViewController.m */,
+				9BD2970E1936CD5400E14192 /* Outputs */,
+				9BD297041936CC6200E14192 /* Editors */,
 				9B1E2CC7191E746500E2AB14 /* CFUnitPickerViewController.h */,
 				9B1E2CC8191E746500E2AB14 /* CFUnitPickerViewController.m */,
 				9B9141DB191AE63A00D30448 /* Model */,
@@ -202,6 +207,32 @@
 				9BE410FC192937EF003DBBFA /* CFValue.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		9BD297041936CC6200E14192 /* Editors */ = {
+			isa = PBXGroup;
+			children = (
+				9BE410FF19294EDB003DBBFA /* CFHomeViewController.h */,
+				9BE4110019294EDB003DBBFA /* CFHomeViewController.m */,
+				9BE4110219294EEC003DBBFA /* CFTransportViewController.h */,
+				9BE4110319294EEC003DBBFA /* CFTransportViewController.m */,
+				9BE4110519294EF8003DBBFA /* CFDietViewController.h */,
+				9BE4110619294EF8003DBBFA /* CFDietViewController.m */,
+			);
+			name = Editors;
+			sourceTree = "<group>";
+		};
+		9BD2970E1936CD5400E14192 /* Outputs */ = {
+			isa = PBXGroup;
+			children = (
+				9BD297051936CCA800E14192 /* CFExplanationViewController.h */,
+				9BD297061936CCA800E14192 /* CFExplanationViewController.m */,
+				9BD297081936CCB800E14192 /* CFExtrapolationViewController.h */,
+				9BD297091936CCB800E14192 /* CFExtrapolationViewController.m */,
+				9BD2970B1936CCC600E14192 /* CFImprovementsViewController.h */,
+				9BD2970C1936CCC600E14192 /* CFImprovementsViewController.m */,
+			);
+			name = Outputs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,9 +338,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B9141AA191AA26700D30448 /* main.m in Sources */,
+				9BD297071936CCA800E14192 /* CFExplanationViewController.m in Sources */,
 				9B9141AE191AA26700D30448 /* CFAppDelegate.m in Sources */,
+				9BD2970A1936CCB800E14192 /* CFExtrapolationViewController.m in Sources */,
 				9BE4110119294EDB003DBBFA /* CFHomeViewController.m in Sources */,
 				9B1E2CC9191E746500E2AB14 /* CFUnitPickerViewController.m in Sources */,
+				9BD2970D1936CCC600E14192 /* CFImprovementsViewController.m in Sources */,
 				9BE4110719294EF8003DBBFA /* CFDietViewController.m in Sources */,
 				9BE410FD192937EF003DBBFA /* CFValue.m in Sources */,
 				9BE4110419294EEC003DBBFA /* CFTransportViewController.m in Sources */,

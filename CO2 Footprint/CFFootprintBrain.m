@@ -80,6 +80,7 @@
 #define TONS_PER_SHORT_FLIGHT .25
 #define TONS_PER_MEDIUM_FLIGHT 1.25/2
 #define TONS_PER_LONG_FLIGHT 1.
+//from http://www.terrapass.com/carbon-footprint-calculator-2/#air
 
 - (double)transportFootprint {
     double milesPerGallon = self.vehicleFuelEfficiency.value;

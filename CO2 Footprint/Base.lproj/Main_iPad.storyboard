@@ -369,6 +369,68 @@
             </objects>
             <point key="canvasLocation" x="858" y="450"/>
         </scene>
+        <!--Explanation View Controller-->
+        <scene sceneID="A57-v5-Kpn">
+            <objects>
+                <viewController storyboardIdentifier="Explanation" id="anc-MK-msf" customClass="CFExplanationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bEi-DB-JB7"/>
+                        <viewControllerLayoutGuide type="bottom" id="BCd-5g-JsF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ldR-5V-Suz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="568"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nSm-aK-ftn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="858" y="1144"/>
+        </scene>
+        <!--Improvements View Controller-->
+        <scene sceneID="8UL-tv-BIj">
+            <objects>
+                <viewController storyboardIdentifier="Improvements" id="I8D-mP-NI5" customClass="CFImprovementsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zfj-tj-cMV"/>
+                        <viewControllerLayoutGuide type="bottom" id="mvj-7f-kpv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y81-ez-XmQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="568"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0qY-km-CPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="858" y="2544"/>
+        </scene>
+        <!--Extrapolation View Controller-->
+        <scene sceneID="gEq-Az-gB4">
+            <objects>
+                <viewController storyboardIdentifier="Extrapolation" id="crM-f3-L7I" customClass="CFExtrapolationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="48N-e8-bjo"/>
+                        <viewControllerLayoutGuide type="bottom" id="MQ3-fq-0Bk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tQm-51-5Wj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bR9-Z4-RhF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="858" y="1836"/>
+        </scene>
         <!--Unit Picker View Controller-->
         <scene sceneID="TGd-zJ-RKd">
             <objects>
