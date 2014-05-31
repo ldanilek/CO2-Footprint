@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CFGraphView.h"
+#import "CFFootprintBrain.h"
 
 //this looks important http://www.esrl.noaa.gov/gmd/ccgg/trends/
+//sinusoidal graph of CO2 concentration?
 
 @interface CFExtrapolationViewController : UIViewController
+
+@property (nonatomic, weak) IBOutlet CFGraphView *graph;
+@property (weak) CFFootprintBrain *footprint;
 
 @end

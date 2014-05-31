@@ -54,6 +54,8 @@ typedef enum {
 //initializing from NSKeyedUnarchiver is encouraged, when possible
 //otherwise, create a blank footprint with the designated initializer init
 
+- (double)yearlyFootprint;//tons per year
+- (double)yearlyFootprintExtrapolated;//tons per year times human population
 - (double)footprint;//in tons of carbon per week
 //all footprints are per week
 

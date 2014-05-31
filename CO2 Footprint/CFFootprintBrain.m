@@ -142,6 +142,20 @@
     return [self homeFootprint]+[self dietFootprint]+[self transportFootprint];
 }
 
+- (double)yearlyFootprint {
+    CFValue *converter = [[CFValue alloc] initWithUnitsTop:UnitMass bottom:UnitTime];
+    converter.topUnit=@"ton";
+    converter.bottomUnit=@"yr";
+    converter.value=self.footprint;
+    return converter.valueInCurrentUnits;
+}
+
+#define HUMAN_POPULATION 7000000000
+
+- (double)yearlyFootprintExtrapolated {
+    return self.yearlyFootprint*HUMAN_POPULATION;
+}
+
 + (CFValue *)newBill {
     CFValue *bill = [[CFValue alloc] initWithUnitsTop:UnitMoney bottom:UnitTime];
     bill.topUnit=@"$";

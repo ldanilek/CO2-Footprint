@@ -24,8 +24,13 @@
     NSError *error;
     NSString *html = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Explanation" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error];
     [self.webview loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
-    self.webview.hidden=YES;
-    self.webview.delegate=self;
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Loading Error" message:[NSString stringWithFormat:@"Error: %@", error] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    } else {
+        self.webview.hidden=YES;
+        self.webview.delegate=self;
+    }
 }
 
 - (void)didReceiveMemoryWarning

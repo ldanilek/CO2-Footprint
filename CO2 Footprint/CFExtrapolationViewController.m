@@ -8,22 +8,43 @@
 
 #import "CFExtrapolationViewController.h"
 
-@interface CFExtrapolationViewController ()
+@interface CFExtrapolationViewController () <CFGraphDelegate>
 
 @end
 
 @implementation CFExtrapolationViewController
 
+#define PPM_PER_TON .0000000001
+
+- (double)valueForIndependent:(double)x {
+    if (x<0) {
+        return nan("negative time");
+    }
+    double currentCO2 = 350;//in ppm
+    
+    //in tons
+    double CO2DueToEverythingElsePerYear = 50;//non human emissions
+    double CO2DueToHumans = self.footprint.yearlyFootprintExtrapolated;
+    
+    return currentCO2+(CO2DueToEverythingElsePerYear+CO2DueToHumans)*PPM_PER_TON*x;
+}
+
+- (double)secondValueForIndependent:(double)x {
+    if (x<0) {
+        return nan("hey");
+    }
+    return log(x);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.graph.origin=CGPointMake(self.graph.bounds.size.width/2, self.graph.bounds.size.height/2);
+    self.graph.scale=.01;
+    self.graph.aspectRatio=1;
+    self.graph.delegate=self;
+    [self.graph setupGestures];
     // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
