@@ -150,7 +150,7 @@
     return converter.valueInCurrentUnits;
 }
 
-#define HUMAN_POPULATION 7000000000
+#define HUMAN_POPULATION 7170277060//june 3 2014 6:45pm
 
 - (double)yearlyFootprintExtrapolated {
     return self.yearlyFootprint*HUMAN_POPULATION;

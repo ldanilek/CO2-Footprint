@@ -8,13 +8,6 @@
 
 #import "CFGraphView.h"
 
-typedef double(^Function)(double);
-
-static Function linearMap(double x0, double y0, double x1, double y1) {
-    double m=(y1-y0)/(x1-x0);
-    return ^(double x) {return m*(x-x0)+y0;};
-}
-
 @implementation CFGraphView
 
 - (void)pan:(UIPanGestureRecognizer *)pan {
@@ -47,10 +40,23 @@ static Function linearMap(double x0, double y0, double x1, double y1) {
     [self addGestureRecognizer:pinch];
 }
 
-- (CGPoint)pointAtX:(double)x y:(double)y {
-    Function toGraphicsX = linearMap(0, self.origin.x, -self.scale*self.origin.x, 0);
-    Function toGraphicsY = linearMap(0, self.origin.y, self.scale*self.aspectRatio*self.origin.y, 0);
-    return CGPointMake(toGraphicsX(x), toGraphicsY(y));
+- (CGPoint)pointAtX:(double)x y:(double)y second:(BOOL)second {
+    
+    CGFloat gX;
+    CGFloat gY;
+    if (x==0) {
+        gX=self.origin.x;
+    } else {
+        Function toGraphicsX = linearMap(0, self.origin.x, -self.scale*self.origin.x, 0);
+        gX=toGraphicsX(x);
+    }
+    if (y==0) {
+        gY=self.origin.y;
+    } else {
+        Function toGraphicsY = linearMap(0, self.origin.y, self.scale*self.aspectRatio*self.origin.y, 0);
+        gY=toGraphicsY(y);
+    }
+    return CGPointMake(gX, gY);
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -65,23 +71,39 @@ static Function linearMap(double x0, double y0, double x1, double y1) {
     Function mapY = linearMap(self.origin.y, 0, 0, self.scale*self.aspectRatio*self.origin.y);
     double minY = mapY(self.bounds.size.height);
     double maxY = mapY(0);
+    
+    UIBezierPath *grid = [UIBezierPath bezierPath];
+    double xIncrements = pow(2, floor(log2(maxX-minX)))/5;
+    int startX = floor((minX-1)/xIncrements)*xIncrements;
+    for (double x=startX; x<maxX+1; x+=xIncrements) {
+        [grid moveToPoint:[self pointAtX:x y:minY second:NO]];
+        [grid addLineToPoint:[self pointAtX:x y:maxY second:NO]];
+    }
+    double yIncrements = pow(2, floor(log2(maxY-minY)))/5;
+    int startY = floor((minY-1)/yIncrements)*yIncrements;
+    for (double y=startY; y<maxY+1; y+=yIncrements) {
+        [grid moveToPoint:[self pointAtX:minX y:y second:NO]];
+        [grid addLineToPoint:[self pointAtX:maxX y:y second:NO]];
+    }
+    [[UIColor lightGrayColor] setStroke];
+    [grid stroke];
+    
     UIBezierPath *graph = [UIBezierPath bezierPath];
     BOOL started = NO;
-    
     for (double indep=minX; indep<maxX; indep+=self.scale) {
         double y = [self.delegate valueForIndependent:indep];
         if (!isnan(y)) {
             if (started) {
-                [graph addLineToPoint:[self pointAtX:indep y:y]];
+                [graph addLineToPoint:[self pointAtX:indep y:y second:NO]];
             } else {
-                [graph moveToPoint:[self pointAtX:indep y:y]];
+                [graph moveToPoint:[self pointAtX:indep y:y second:NO]];
                 started=YES;
             }
         }
     }
     [[UIColor redColor] setStroke];
     [graph stroke];
-    
+    /*
     UIBezierPath *graph2 = [UIBezierPath bezierPath];
     BOOL started2 = NO;
     
@@ -89,31 +111,21 @@ static Function linearMap(double x0, double y0, double x1, double y1) {
         double y = [self.delegate secondValueForIndependent:indep];
         if (!isnan(y)) {
             if (started2) {
-                [graph2 addLineToPoint:[self pointAtX:indep y:y]];
+                [graph2 addLineToPoint:[self pointAtX:indep y:y second:YES]];
             } else {
-                [graph2 moveToPoint:[self pointAtX:indep y:y]];
+                [graph2 moveToPoint:[self pointAtX:indep y:y second:YES]];
                 started2=YES;
             }
         }
     }
     [[UIColor blueColor] setStroke];
     [graph2 stroke];
-    
-    UIBezierPath *grid = [UIBezierPath bezierPath];
-    for (int x=minX-1; x<maxX+1; x++) {
-        [grid moveToPoint:[self pointAtX:x y:minY]];
-        [grid addLineToPoint:[self pointAtX:x y:maxY]];
-    }
-    for (int y=minY-1; y<maxY+1; y++) {
-        [grid moveToPoint:[self pointAtX:minX y:y]];
-        [grid addLineToPoint:[self pointAtX:maxX y:y]];
-    }
-    [[UIColor lightGrayColor] setStroke];
-    [grid stroke];
-    
+    */
     UIBezierPath *axes = [UIBezierPath bezierPath];
     [axes moveToPoint:CGPointMake(self.origin.x, 0)];
     [axes addLineToPoint:CGPointMake(self.origin.x, self.bounds.size.height)];
+    //[axes moveToPoint:CGPointMake(0, self.origin2)];
+    //[axes addLineToPoint:CGPointMake(self.bounds.size.height, self.origin2)];
     [axes moveToPoint:CGPointMake(0, self.origin.y)];
     [axes addLineToPoint:CGPointMake(self.bounds.size.height, self.origin.y)];
     [[UIColor blackColor] setStroke];

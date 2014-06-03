@@ -72,7 +72,7 @@
             </objects>
             <point key="canvasLocation" x="559" y="1108"/>
         </scene>
-        <!--Extrapolation View Controller-->
+        <!--Extrapolation View Controller - Extrapolation-->
         <scene sceneID="aSN-pO-Gye">
             <objects>
                 <viewController id="rY8-9g-p4b" customClass="CFExtrapolationViewController" sceneMemberID="viewController">
@@ -92,14 +92,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="how would the Earth's CO2 and" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YB7-lC-Im1">
-                                <rect key="frame" x="20" y="100" width="245" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="how would the Earth's CO2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YB7-lC-Im1">
+                                <rect key="frame" x="20" y="100" width="211" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="temperature look in the future?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lkQ-xg-zec">
-                                <rect key="frame" x="20" y="129" width="236" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="concentration look in the future?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lkQ-xg-zec">
+                                <rect key="frame" x="20" y="129" width="249" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -107,7 +107,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YVv-ef-AbQ"/>
+                    <navigationItem key="navigationItem" title="Extrapolation" id="YVv-ef-AbQ"/>
                     <connections>
                         <outlet property="graph" destination="yXW-an-Skx" id="OF8-lr-NoY"/>
                     </connections>
