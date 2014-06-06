@@ -91,4 +91,8 @@ typedef enum {
 
 - (double)dietFootprint;
 
+- (NSArray *)keywordsForSectionTitle:(NSString *)sectionTitle;
+- (NSString *)explanationForKeyword:(NSString *)keyword;
+- (double)savingsForKeyword:(NSString *)keyword;//in tons per week
+
 @end

@@ -18,7 +18,6 @@ static Function linearMap(double x0, double y0, double x1, double y1) {
 @protocol CFGraphDelegate <NSObject>
 
 - (double)valueForIndependent:(double)x;
-- (double)secondValueForIndependent:(double)x;//for temp and CO2 separate
 
 @end
 

@@ -14,6 +14,99 @@
 
 @implementation CFFootprintBrain
 
+- (NSArray *)keywordsForSectionTitle:(NSString *)sectionTitle {
+    NSMutableArray *keywords = [@[] mutableCopy];
+    if ([sectionTitle isEqual:@"Home"]) {
+        [keywords addObject:@"Chill out"];
+        [keywords addObject:@"Power off"];
+        
+    }if ([sectionTitle isEqual:@"Transportation"]) {
+        [keywords addObject:@"Carpool"];
+        [keywords addObject:@"Shortcut"];
+    }
+    if ([sectionTitle isEqual:@"Diet"]) {
+        [keywords addObject:@"Eat better"];
+    }
+    [keywords filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSString *evaluatedObject, NSDictionary *bindings) {
+        return [self explanationForKeyword:evaluatedObject]!=nil;
+    }]];
+    return [keywords copy];
+}
+
+- (NSString *)explanationForKeyword:(NSString *)keyword {
+    if ([keyword isEqual:@"Chill out"]&&self.fuelBill.value>1&&self.heatingFuelType!=HeatingFuelNone) {
+        return @"Use 25% less fuel";
+    }
+    if ([keyword isEqual:@"Power off"]) {
+        return @"Use 25% less electricity";
+    }
+    if ([keyword isEqual:@"Carpool"]&&self.vehicleMileage.value>1&&self.carShared<5) {
+        return @"Drive with 2 more people";
+    }
+    if ([keyword isEqual:@"Shortcut"]&&self.vehicleMileage.value>1) {
+        return @"Drive 5% less";
+    }
+    if ([keyword isEqual:@"Eat better"] && self.diet>DietVegan) {
+        NSString *identifier;
+        switch (self.diet-1) {
+            case DietAverage:
+                identifier=@"an average";
+                break;
+                
+            case DietNoBeef:
+                identifier=@"a no-beef";
+                break;
+                
+            case DietVegetarian:
+                identifier=@"a vegetarian";
+                break;
+                
+            case DietVegan:
+                identifier=@"a vegan";
+                break;
+                
+            default:
+                break;
+        }
+        return [NSString stringWithFormat:@"Adopt %@ diet", identifier];
+    }
+    return nil;
+}
+
+- (double)savingsForKeyword:(NSString *)keyword {
+    if ([keyword isEqual:@"Chill out"]) {
+        self.fuelBill.value*=3./4;
+        double footprint = self.homeFootprint;
+        self.fuelBill.value/=3./4;
+        return self.homeFootprint-footprint;
+    }
+    if ([keyword isEqual:@"Power off"]) {
+        self.electricBill.value*=3./4;
+        double newFoot = self.homeFootprint;
+        self.electricBill.value/=3./4;
+        return self.homeFootprint-newFoot;
+    }
+    if ([keyword isEqual:@"Carpool"]) {
+        self.carShared+=2;
+        double newFoot = self.transportFootprint;
+        self.carShared-=2;
+        return self.transportFootprint-newFoot;
+    }
+    if ([keyword isEqual:@"Eat better"] && self.diet>DietVegan) {
+        self.diet--;
+        double newFoot = self.dietFootprint;
+        self.diet++;
+        return self.dietFootprint-newFoot;
+    }
+    if ([keyword isEqual:@"Shortcut"]) {
+        self.vehicleMileage.value*=.95;
+        double newFoot = self.transportFootprint;
+        self.vehicleMileage.value/=.95;
+        return self.transportFootprint-newFoot;
+    }
+    return 0;
+}
+
 #pragma mark - Default Values
 
 - (double)homeSharing {

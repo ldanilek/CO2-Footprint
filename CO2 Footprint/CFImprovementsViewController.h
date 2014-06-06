@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CFFootprintBrain.h"
 
 @interface CFImprovementsViewController : UIViewController
+
+@property (weak) CFFootprintBrain *footprint;
 
 @end

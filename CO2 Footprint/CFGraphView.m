@@ -40,7 +40,7 @@
     [self addGestureRecognizer:pinch];
 }
 
-- (CGPoint)pointAtX:(double)x y:(double)y second:(BOOL)second {
+- (CGPoint)pointAtX:(double)x y:(double)y {
     
     CGFloat gX;
     CGFloat gY;
@@ -65,25 +65,56 @@
 {
     //min x
     //map x: origin.x->0; 0->-scale*origin.x
-    Function mapX = linearMap(self.origin.x, 0, 0, -self.scale*self.origin.x);
+    Function mapX = linearMap(self.origin.x, 0, self.origin.x+1, self.scale);
     double minX = mapX(0);
     double maxX = mapX(self.bounds.size.width);
-    Function mapY = linearMap(self.origin.y, 0, 0, self.scale*self.aspectRatio*self.origin.y);
+    Function mapY = linearMap(self.origin.y, 0, self.origin.y-1, self.aspectRatio * self.scale);
     double minY = mapY(self.bounds.size.height);
     double maxY = mapY(0);
     
     UIBezierPath *grid = [UIBezierPath bezierPath];
     double xIncrements = pow(2, floor(log2(maxX-minX)))/5;
-    int startX = floor((minX-1)/xIncrements)*xIncrements;
+    double startX = floor((minX-1)/xIncrements)*xIncrements;
+    [[UIColor blackColor] setStroke];
     for (double x=startX; x<maxX+1; x+=xIncrements) {
-        [grid moveToPoint:[self pointAtX:x y:minY second:NO]];
-        [grid addLineToPoint:[self pointAtX:x y:maxY second:NO]];
+        if (ABS(x)>xIncrements/10) {
+            [grid moveToPoint:[self pointAtX:x y:minY]];
+            [grid addLineToPoint:[self pointAtX:x y:maxY]];
+            
+            UIFont *font = [UIFont systemFontOfSize:10];
+            NSDictionary *attribs = @{NSFontAttributeName: font};
+            NSString *scale = [NSString stringWithFormat:@"%gyrs", x];
+            CGSize size;
+            if ([scale respondsToSelector:@selector(sizeWithAttributes:)]) size = [scale sizeWithAttributes:attribs];
+            else size = [scale sizeWithFont:font];
+            CGPoint atX = [self pointAtX:x y:0];
+            atX.x-=size.width/2;
+            atX.y-=size.height;
+            atX.y = MAX(MIN(self.bounds.size.height-size.height, atX.y), 0);
+            if ([scale respondsToSelector:@selector(drawAtPoint:withAttributes:)]) [scale drawAtPoint:atX withAttributes:attribs];
+            else [scale drawAtPoint:atX withFont:font];
+        }
     }
     double yIncrements = pow(2, floor(log2(maxY-minY)))/5;
-    int startY = floor((minY-1)/yIncrements)*yIncrements;
+    double startY = floor((minY-1)/yIncrements)*yIncrements;
     for (double y=startY; y<maxY+1; y+=yIncrements) {
-        [grid moveToPoint:[self pointAtX:minX y:y second:NO]];
-        [grid addLineToPoint:[self pointAtX:maxX y:y second:NO]];
+        if (ABS(y)>yIncrements/10) {
+            [grid moveToPoint:[self pointAtX:minX y:y]];
+            [grid addLineToPoint:[self pointAtX:maxX y:y]];
+            
+            UIFont *font = [UIFont systemFontOfSize:10];
+            NSDictionary *attribs = @{NSFontAttributeName: font};
+            NSString *scale = [NSString stringWithFormat:@"%gppm", y];
+            CGSize size;
+            if ([scale respondsToSelector:@selector(sizeWithAttributes:)]) size = [scale sizeWithAttributes:attribs];
+            else size = [scale sizeWithFont:font];
+            CGPoint atY = [self pointAtX:0 y:y];
+            atY.x+=5;//move over a bit so it looks good
+            atY.y-=size.height/2;
+            atY.x = MAX(MIN(atY.x, self.bounds.size.width-size.width), 5);
+            if ([scale respondsToSelector:@selector(drawAtPoint:withAttributes:)]) [scale drawAtPoint:atY withAttributes:attribs];
+            else [scale drawAtPoint:atY withFont:font];
+        }
     }
     [[UIColor lightGrayColor] setStroke];
     [grid stroke];
@@ -94,41 +125,23 @@
         double y = [self.delegate valueForIndependent:indep];
         if (!isnan(y)) {
             if (started) {
-                [graph addLineToPoint:[self pointAtX:indep y:y second:NO]];
+                [graph addLineToPoint:[self pointAtX:indep y:y]];
             } else {
-                [graph moveToPoint:[self pointAtX:indep y:y second:NO]];
+                [graph moveToPoint:[self pointAtX:indep y:y]];
                 started=YES;
             }
         }
     }
     [[UIColor redColor] setStroke];
     [graph stroke];
-    /*
-    UIBezierPath *graph2 = [UIBezierPath bezierPath];
-    BOOL started2 = NO;
     
-    for (double indep=minX; indep<maxX; indep+=self.scale) {
-        double y = [self.delegate secondValueForIndependent:indep];
-        if (!isnan(y)) {
-            if (started2) {
-                [graph2 addLineToPoint:[self pointAtX:indep y:y second:YES]];
-            } else {
-                [graph2 moveToPoint:[self pointAtX:indep y:y second:YES]];
-                started2=YES;
-            }
-        }
-    }
-    [[UIColor blueColor] setStroke];
-    [graph2 stroke];
-    */
     UIBezierPath *axes = [UIBezierPath bezierPath];
     [axes moveToPoint:CGPointMake(self.origin.x, 0)];
     [axes addLineToPoint:CGPointMake(self.origin.x, self.bounds.size.height)];
-    //[axes moveToPoint:CGPointMake(0, self.origin2)];
-    //[axes addLineToPoint:CGPointMake(self.bounds.size.height, self.origin2)];
     [axes moveToPoint:CGPointMake(0, self.origin.y)];
     [axes addLineToPoint:CGPointMake(self.bounds.size.height, self.origin.y)];
     [[UIColor blackColor] setStroke];
+    axes.lineWidth=2;
     [axes stroke];
 }
 
