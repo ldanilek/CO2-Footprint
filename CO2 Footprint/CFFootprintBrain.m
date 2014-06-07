@@ -167,8 +167,8 @@
 
 //1 mile/gallon for 1 mi/wk releases 1062 pounds per year
 //1 gal/wk releases 1062 pounds/yr * 0.019164956 yr/wk * ton/2000 pounds
-//1 gal of gasoline releases 20.353183 tons of CO2
-#define TONS_PER_GALLON_OF_GASOLINE .0101766
+//1 gal of gasoline releases 20.421053 lbs of CO2
+#define TONS_PER_GALLON_OF_GASOLINE .0102105265
 
 #define TONS_PER_SHORT_FLIGHT .25
 #define TONS_PER_MEDIUM_FLIGHT 1.25/2

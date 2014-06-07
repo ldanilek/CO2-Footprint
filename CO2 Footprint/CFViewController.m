@@ -66,7 +66,7 @@
     if (section) {//inputs
         return 3;
     } else {//outputs
-        return 4;
+        return 5;
     }
 }
 
@@ -79,7 +79,7 @@
     } else {
         //outputs
         if (indexPath.row) {
-            cell.textLabel.text=@[@"",@"Explanation", @"Extrapolation", @"Improvements"][indexPath.row];
+            cell.textLabel.text=@[@"",@"Explanation", @"Extrapolation", @"Improvements", @"Sources and Statistics"][indexPath.row];
             if (![self usePopovers]) cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         } else {
             //CO2 Footprint
@@ -105,6 +105,8 @@
             identifier=@"Extrapolation";
         } else if (indexPath.row==3) {
             identifier=@"Improvements";
+        } else if (indexPath.row==4) {
+            identifier=@"Sources and Statistics";
         }
         if ([self usePopovers]) {
             [self presentViewInPopover:identifier fromTableView:tableView indexPath:indexPath];

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="C7E-eE-Pc5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="C7E-eE-Pc5">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -38,6 +38,7 @@
                         <segue destination="bg5-jd-hXB" kind="push" identifier="Explanation" id="KmI-5f-u2N"/>
                         <segue destination="rY8-9g-p4b" kind="push" identifier="Extrapolation" id="9ED-cu-Kzu"/>
                         <segue destination="Cep-bW-eMs" kind="push" identifier="Improvements" id="KT5-VH-RVV"/>
+                        <segue destination="Jtp-S9-fcF" kind="push" identifier="Sources and Statistics" id="qDG-12-4ro"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voH-Pw-IZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -121,7 +122,22 @@
             </objects>
             <point key="canvasLocation" x="559" y="1736"/>
         </scene>
-        <!--Improvements View Controller-->
+        <!--Sources View Controller - Sources and Statistics-->
+        <scene sceneID="b2E-Nu-9WH">
+            <objects>
+                <viewController id="Jtp-S9-fcF" customClass="CFSourcesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tME-gX-0gH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sources and Statistics" id="7iE-WI-nP6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QvI-SJ-3yU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="70" y="2034"/>
+        </scene>
+        <!--Improvements View Controller - Improvements-->
         <scene sceneID="xSN-mw-ClL">
             <objects>
                 <viewController id="Cep-bW-eMs" customClass="CFImprovementsViewController" sceneMemberID="viewController">
@@ -130,7 +146,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hnx-nj-3lb"/>
+                    <navigationItem key="navigationItem" title="Improvements" id="hnx-nj-3lb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYp-eY-6MX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

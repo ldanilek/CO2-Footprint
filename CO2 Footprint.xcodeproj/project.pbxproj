@@ -32,6 +32,7 @@
 		9BD2970A1936CCB800E14192 /* CFExtrapolationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD297091936CCB800E14192 /* CFExtrapolationViewController.m */; };
 		9BD2970D1936CCC600E14192 /* CFImprovementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2970C1936CCC600E14192 /* CFImprovementsViewController.m */; };
 		9BD297551937B21900E14192 /* Explanation.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BD297541937B21900E14192 /* Explanation.html */; };
+		9BDBD0791943644E000AD369 /* CFSourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDBD0781943644E000AD369 /* CFSourcesViewController.m */; };
 		9BE2656C1939034B006673D7 /* The_green_house_effect.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2656B1939034B006673D7 /* The_green_house_effect.svg */; };
 		9BE2656E19390430006673D7 /* Greenhouse_Effect.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2656D19390430006673D7 /* Greenhouse_Effect.svg */; };
 		9BE2657119390657006673D7 /* CFGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2657019390657006673D7 /* CFGraphView.m */; };
@@ -87,6 +88,8 @@
 		9BD2970B1936CCC600E14192 /* CFImprovementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFImprovementsViewController.h; sourceTree = "<group>"; };
 		9BD2970C1936CCC600E14192 /* CFImprovementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFImprovementsViewController.m; sourceTree = "<group>"; };
 		9BD297541937B21900E14192 /* Explanation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Explanation.html; sourceTree = "<group>"; };
+		9BDBD0771943644E000AD369 /* CFSourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFSourcesViewController.h; sourceTree = "<group>"; };
+		9BDBD0781943644E000AD369 /* CFSourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFSourcesViewController.m; sourceTree = "<group>"; };
 		9BE2656B1939034B006673D7 /* The_green_house_effect.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = The_green_house_effect.svg; sourceTree = "<group>"; };
 		9BE2656D19390430006673D7 /* Greenhouse_Effect.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Greenhouse_Effect.svg; sourceTree = "<group>"; };
 		9BE2656F19390657006673D7 /* CFGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFGraphView.h; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 				9BE2657019390657006673D7 /* CFGraphView.m */,
 				9BD2970B1936CCC600E14192 /* CFImprovementsViewController.h */,
 				9BD2970C1936CCC600E14192 /* CFImprovementsViewController.m */,
+				9BDBD0771943644E000AD369 /* CFSourcesViewController.h */,
+				9BDBD0781943644E000AD369 /* CFSourcesViewController.m */,
 			);
 			name = Outputs;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 			files = (
 				9B9141AA191AA26700D30448 /* main.m in Sources */,
 				9BD297071936CCA800E14192 /* CFExplanationViewController.m in Sources */,
+				9BDBD0791943644E000AD369 /* CFSourcesViewController.m in Sources */,
 				9B9141AE191AA26700D30448 /* CFAppDelegate.m in Sources */,
 				9BE2657119390657006673D7 /* CFGraphView.m in Sources */,
 				9BD2970A1936CCB800E14192 /* CFExtrapolationViewController.m in Sources */,
