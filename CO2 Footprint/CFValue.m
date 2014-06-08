@@ -25,12 +25,17 @@
         if ([unit isEqualToString:@"wk"]) return 1;
         if ([unit isEqualToString:@"day"]) return 7;
         if ([unit isEqualToString:@"hr"]) return 7*24;
-        if ([unit isEqualToString:@"yr"]) return 0.019164956;
+        if ([unit isEqualToString:@"yr"]) return 0.01916495551;
         if ([unit isEqualToString:@"mo"]) return 0.22999;
+        if ([unit isEqualToString:@"min"]) return 10080;
     } else if ([self.distanceUnits containsObject:unit]) {
         //convert from miles
         if ([unit isEqualToString:@"mi"]) return 1;
         if ([unit isEqualToString:@"km"]) return 1.609344;
+        if ([unit isEqualToString:@"m"]) return 1609.344;
+        if ([unit isEqualToString:@"yd"]) return 1760;
+        if ([unit isEqualToString:@"ft"]) return 5280;
+        //if ([unit isEqualToString:@"nm"]) return 0.86897624;
     } else if ([self.energyUnits containsObject:unit]) {
         //to Joules
         if ([unit isEqualToString:@"J"]) return 1;
@@ -40,11 +45,16 @@
     } else if ([self.volumeUnits containsObject:unit]) {
         //to gallons
         if ([unit isEqualToString:@"gal"]) return 1;
-        if ([unit isEqualToString:@"L"]) return 3.7854118;
+        if ([unit isEqualToString:@"L"]) return 3.785411784;
+        if ([unit isEqualToString:@"ft³"]) return 0.1336805556;
+        if ([unit isEqualToString:@"qt"]) return 4;
+        if ([unit isEqualToString:@"m³"]) return 0.0037854118;
     } else if ([self.moneyUnits containsObject:unit]) {
         //to dollars
         if ([unit isEqualToString:@"$"]) return 1;
-        if ([unit isEqualToString:@"€"]) return 0.734;
+        if ([unit isEqualToString:@"€"]) return 0.732961;
+        if ([unit isEqualToString:@"¥"]) return 102.51;
+        if ([unit isEqualToString:@"£"]) return 0.59515;
     } else if ([self.massUnits containsObject:unit]) {
         //to tons
         if ([unit isEqualToString:@"ton"]) return 1;
@@ -56,15 +66,15 @@
 }
 
 + (NSArray *)distanceUnits {
-    return @[@"mi", @"km"];
+    return @[@"mi", @"km", @"m", @"yd", @"ft"];
 }
 
 + (NSArray *)timeUnits {
-    return @[@"wk", @"yr", @"mo", @"day", @"hr"];
+    return @[@"yr", @"mo", @"wk", @"day", @"hr", @"min"];
 }
 
 + (NSArray *)volumeUnits {
-    return @[@"gal", @"L"];
+    return @[@"gal", @"L", @"ft³", @"qt",@"m³"];
 }
 
 + (NSArray *)energyUnits {
@@ -75,7 +85,7 @@
     return @[@"ton", @"lb", @"kg"];
 }
 + (NSArray *)moneyUnits {
-    return @[@"$", @"€"];
+    return @[@"$", @"€", @"¥", @"£"];
 }
 
 + (NSArray *)possibleUnitsForType:(CFUnitType)unitType {

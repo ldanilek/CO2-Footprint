@@ -33,11 +33,25 @@
     [self setNeedsDisplay];
 }
 
+- (void)doubleTap:(UITapGestureRecognizer *)tap {
+    CGPoint location = [tap locationInView:self];
+    if (tap.numberOfTouches==1) [self zoomAroundPoint:location scale:2];
+    else [self zoomAroundPoint:location scale:.5];
+    [self setNeedsDisplay];
+}
+
 - (void)setupGestures {
     UIPanGestureRecognizer *scroll = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
     [self addGestureRecognizer:scroll];
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)];
     [self addGestureRecognizer:pinch];
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    doubleTap.numberOfTapsRequired=2;
+    [self addGestureRecognizer:doubleTap];
+    UITapGestureRecognizer *twoFingerDoubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    twoFingerDoubleTap.numberOfTapsRequired=2;
+    twoFingerDoubleTap.numberOfTouchesRequired=2;
+    [self addGestureRecognizer:twoFingerDoubleTap];
 }
 
 - (CGPoint)pointAtX:(double)x y:(double)y {

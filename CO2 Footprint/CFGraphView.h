@@ -28,10 +28,8 @@ static Function linearMap(double x0, double y0, double x1, double y1) {
 
 //constants
 @property double aspectRatio;//x scale * aspectRatio = y scale
-//@property double aspectRatio2;//for other graph
 
 @property CGPoint origin;
-//@property CGFloat origin2;
 @property double scale;//x Scale in units per pixel
 
 - (void)setupGestures;

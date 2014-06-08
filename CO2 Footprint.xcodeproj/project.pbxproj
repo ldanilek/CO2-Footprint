@@ -33,6 +33,7 @@
 		9BD2970D1936CCC600E14192 /* CFImprovementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD2970C1936CCC600E14192 /* CFImprovementsViewController.m */; };
 		9BD297551937B21900E14192 /* Explanation.html in Resources */ = {isa = PBXBuildFile; fileRef = 9BD297541937B21900E14192 /* Explanation.html */; };
 		9BDBD0791943644E000AD369 /* CFSourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BDBD0781943644E000AD369 /* CFSourcesViewController.m */; };
+		9BDBD07B194407E2000AD369 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BDBD07A194407E2000AD369 /* QuartzCore.framework */; };
 		9BE2656C1939034B006673D7 /* The_green_house_effect.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2656B1939034B006673D7 /* The_green_house_effect.svg */; };
 		9BE2656E19390430006673D7 /* Greenhouse_Effect.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9BE2656D19390430006673D7 /* Greenhouse_Effect.svg */; };
 		9BE2657119390657006673D7 /* CFGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE2657019390657006673D7 /* CFGraphView.m */; };
@@ -90,6 +91,7 @@
 		9BD297541937B21900E14192 /* Explanation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Explanation.html; sourceTree = "<group>"; };
 		9BDBD0771943644E000AD369 /* CFSourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFSourcesViewController.h; sourceTree = "<group>"; };
 		9BDBD0781943644E000AD369 /* CFSourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFSourcesViewController.m; sourceTree = "<group>"; };
+		9BDBD07A194407E2000AD369 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9BE2656B1939034B006673D7 /* The_green_house_effect.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = The_green_house_effect.svg; sourceTree = "<group>"; };
 		9BE2656D19390430006673D7 /* Greenhouse_Effect.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Greenhouse_Effect.svg; sourceTree = "<group>"; };
 		9BE2656F19390657006673D7 /* CFGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFGraphView.h; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BDBD07B194407E2000AD369 /* QuartzCore.framework in Frameworks */,
 				9B9141A0191AA26700D30448 /* CoreGraphics.framework in Frameworks */,
 				9B9141A2191AA26700D30448 /* UIKit.framework in Frameworks */,
 				9B91419E191AA26700D30448 /* Foundation.framework in Frameworks */,
@@ -150,6 +153,7 @@
 		9B91419C191AA26700D30448 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9BDBD07A194407E2000AD369 /* QuartzCore.framework */,
 				9B91419D191AA26700D30448 /* Foundation.framework */,
 				9B91419F191AA26700D30448 /* CoreGraphics.framework */,
 				9B9141A1191AA26700D30448 /* UIKit.framework */,

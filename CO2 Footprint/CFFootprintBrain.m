@@ -37,7 +37,7 @@
     if ([keyword isEqual:@"Chill out"]&&self.fuelBill.value>1&&self.heatingFuelType!=HeatingFuelNone) {
         return @"Use 25% less fuel";
     }
-    if ([keyword isEqual:@"Power off"]) {
+    if ([keyword isEqual:@"Power off"] && self.electricBill.value>1) {
         return @"Use 25% less electricity";
     }
     if ([keyword isEqual:@"Carpool"]&&self.vehicleMileage.value>1&&self.carShared<5) {

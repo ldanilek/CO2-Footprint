@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSDictionary *keywords;
 @property (nonatomic, strong) NSArray *sectionTitles;
+@property BOOL loaded;
 
 @end
 
@@ -72,11 +73,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UITableView *table = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    table.delegate=self;
-    table.dataSource=self;
-    [self.view addSubview:table];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    if (!self.loaded) {
+        self.loaded=YES;
+        UITableView *table = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        table.delegate=self;
+        table.dataSource=self;
+        [self.view addSubview:table];
+    }
 }
 
 - (void)didReceiveMemoryWarning

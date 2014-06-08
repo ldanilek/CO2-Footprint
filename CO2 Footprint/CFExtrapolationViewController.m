@@ -5,12 +5,13 @@
 //  Created by Lee Danilek on 5/28/14.
 //  Copyright (c) 2014 Ship Shape. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
 #import "CFExtrapolationViewController.h"
 
 @interface CFExtrapolationViewController () <CFGraphDelegate>
 
 @property (nonatomic) double ppmPerYear;//since the footprint will not change over the life of the extrapolation view controller, it's safe to calculate the slope once and reuse it.
+@property BOOL loaded;
 
 @end
 
@@ -123,38 +124,38 @@
 
 - (double)minCO2 {
     //initial values
-    return [self valueForIndependent:[self minYear]]-10;
+    return [self valueForIndependent:[self minYear]];
 }
 
 - (double)maxCO2 {
-    return [self valueForIndependent:[self maxYear]]+1;
+    return [self valueForIndependent:[self maxYear]];
 }
-/*
-- (double)minTemp {
-    return [self secondValueForIndependent:[self minYear]];
+- (void)viewDidLayoutSubviews {
+    if (!self.loaded) {
+        self.loaded=YES;
+        //find x from min and max year
+        double yearDistance = (self.maxYear-self.minYear);
+        double co2Distance = (self.maxCO2-self.minCO2);
+        self.graph.scale=yearDistance/self.graph.bounds.size.width;
+        Function mapX = linearMap(self.minYear, 0, self.maxYear, self.graph.bounds.size.width);
+        Function mapY = linearMap(self.minCO2, self.graph.bounds.size.height, self.maxCO2, 0);
+        
+        self.graph.origin=CGPointMake(mapX(0), mapY(0));
+        
+        self.graph.aspectRatio=(co2Distance/self.graph.bounds.size.height)/(yearDistance/self.graph.bounds.size.width);
+        
+        self.graph.delegate=self;
+        [self.graph setupGestures];
+        self.graph.layer.cornerRadius=20;
+        self.graph.layer.borderColor=[[UIColor blackColor] CGColor];
+        self.graph.layer.borderWidth=2;
+        self.graph.clipsToBounds=YES;
+    }
 }
-
-- (double)maxTemp {
-    return [self secondValueForIndependent:[self maxYear]];
-}
-*/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //find x from min and max year
-    self.graph.scale=(self.maxYear-self.minYear)/self.graph.bounds.size.width;
-    Function mapX = linearMap(self.minYear, 0, self.maxYear, self.graph.bounds.size.width);
-    Function mapY = linearMap(self.minCO2, self.graph.bounds.size.height, self.maxCO2, 0);
     
-    self.graph.origin=CGPointMake(mapX(0), mapY(0));
-    //Function mapY2 = linearMap(self.minTemp, self.graph.bounds.size.height, self.maxTemp, 0);
-    //self.graph.origin2=mapY2(0);
-    
-    self.graph.aspectRatio=(self.maxCO2-self.minCO2)/(self.maxYear-self.minYear);
-    //self.graph.aspectRatio2=(self.maxTemp-self.minTemp)/(self.maxYear-self.minYear);
-    
-    self.graph.delegate=self;
-    [self.graph setupGestures];
     // Do any additional setup after loading the view.
 }
 

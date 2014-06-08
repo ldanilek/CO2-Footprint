@@ -50,7 +50,7 @@
             <objects>
                 <viewController storyboardIdentifier="Explanation" id="bg5-jd-hXB" customClass="CFExplanationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aYT-Rc-890">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" id="SiY-Jn-N3k">
@@ -58,13 +58,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <webView contentMode="scaleToFill" id="zqF-OE-4xa">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Explanation" id="HEW-7i-Rgd"/>
                     <connections>
                         <outlet property="webview" destination="zqF-OE-4xa" id="DOa-7v-4N4"/>
@@ -127,10 +128,11 @@
             <objects>
                 <viewController id="Jtp-S9-fcF" customClass="CFSourcesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tME-gX-0gH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Sources and Statistics" id="7iE-WI-nP6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QvI-SJ-3yU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -142,10 +144,11 @@
             <objects>
                 <viewController id="Cep-bW-eMs" customClass="CFImprovementsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9aQ-cN-CVb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Improvements" id="hnx-nj-3lb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYp-eY-6MX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -185,7 +188,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P05-rR-Qjo">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P05-rR-Qjo">
                                 <rect key="frame" x="151" y="176" width="64" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -552,6 +555,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="RRa-sN-w14"/>
+        <segue reference="uWE-wT-HlX"/>
     </inferredMetricsTieBreakers>
 </document>
