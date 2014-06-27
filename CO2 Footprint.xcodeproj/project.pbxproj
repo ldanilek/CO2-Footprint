@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B1E2CC9191E746500E2AB14 /* CFUnitPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E2CC8191E746500E2AB14 /* CFUnitPickerViewController.m */; };
 		9B1E2CCA191E746500E2AB14 /* CFUnitPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1E2CC8191E746500E2AB14 /* CFUnitPickerViewController.m */; };
+		9B706F87194663F300F1FD9F /* 4_5_degrees.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B706F86194663F300F1FD9F /* 4_5_degrees.png */; };
 		9B91419E191AA26700D30448 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B91419D191AA26700D30448 /* Foundation.framework */; };
 		9B9141A0191AA26700D30448 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B91419F191AA26700D30448 /* CoreGraphics.framework */; };
 		9B9141A2191AA26700D30448 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9141A1191AA26700D30448 /* UIKit.framework */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		9B1E2CC7191E746500E2AB14 /* CFUnitPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFUnitPickerViewController.h; sourceTree = "<group>"; };
 		9B1E2CC8191E746500E2AB14 /* CFUnitPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFUnitPickerViewController.m; sourceTree = "<group>"; };
+		9B706F86194663F300F1FD9F /* 4_5_degrees.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4_5_degrees.png; sourceTree = "<group>"; };
 		9B91419A191AA26700D30448 /* CO2 Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CO2 Footprint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B91419D191AA26700D30448 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9B91419F191AA26700D30448 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -246,6 +248,7 @@
 				9BD297541937B21900E14192 /* Explanation.html */,
 				9BE2656D19390430006673D7 /* Greenhouse_Effect.svg */,
 				9BE2656B1939034B006673D7 /* The_green_house_effect.svg */,
+				9B706F86194663F300F1FD9F /* 4_5_degrees.png */,
 				9BD297081936CCB800E14192 /* CFExtrapolationViewController.h */,
 				9BD297091936CCB800E14192 /* CFExtrapolationViewController.m */,
 				9BE2656F19390657006673D7 /* CFGraphView.h */,
@@ -345,6 +348,7 @@
 				9B9141B1191AA26700D30448 /* Main_iPhone.storyboard in Resources */,
 				9B9141DA191AE56A00D30448 /* testSpecs.md in Resources */,
 				9BE2656E19390430006673D7 /* Greenhouse_Effect.svg in Resources */,
+				9B706F87194663F300F1FD9F /* 4_5_degrees.png in Resources */,
 				9B9141A8191AA26700D30448 /* InfoPlist.strings in Resources */,
 				9B9141D8191AA7D700D30448 /* DesignSpecs.md in Resources */,
 				9BE2656C1939034B006673D7 /* The_green_house_effect.svg in Resources */,

@@ -22,17 +22,11 @@
 //40 percent of human output is absorbed into environment
 //https://answers.yahoo.com/question/index?qid=20070906124908AAXV6Bx
 //1ppm = 2.348 billion tons of CO2
-//according to http://cdiac.ornl.gov/pns/convert.html
-//1ppm = 2.13 metric gigatons
-//1ppm = 2.348*10^9 short tons
-#define PPM_PER_TON 1./(2.348e9)
+
 
 #define CURRENT_SLOPE 2.09//current slope is 209 ppm/century
 
 #define START_CO2 397.9//in ppm. from graph on http://www.wolframalpha.com/input/?i=CO2+concentration
-
-#define CO2_AMP 3.
-//one period per year
 
 
 - (double)ppmPerYear {
@@ -46,7 +40,8 @@
 }
 
 - (double)valueForIndependent:(double)x {
-    double variation = CO2_AMP*sin(x*2*M_PI);
+    //from http://sansteknologi.blogspot.com/2013/02/mauna-loa-carbon-dioxide-fit.html
+    double variation = -.8263*cos(2*M_PI*x) + .6033*cos(4*M_PI*x)+.0255*cos(6*M_PI*x)-.0208*cos(8*M_PI*x)+.0166*cos(10*M_PI*x)-.0135*cos(12*M_PI*x)+2.8359*sin(2*M_PI*x)-.5413*sin(4*M_PI*x)-.0957*sin(6*M_PI*x)+.043*sin(8*M_PI*x)+.0218*sin(10*M_PI*x)-.0002*sin(12*M_PI*x);
     if (x<0) {
         //historical
         //store for easy access and efficiency of calculation
@@ -142,7 +137,7 @@
         
         self.graph.origin=CGPointMake(mapX(0), mapY(0));
         
-        self.graph.aspectRatio=(co2Distance/self.graph.bounds.size.height)/(yearDistance/self.graph.bounds.size.width);
+        self.graph.aspectRatio=(co2Distance/self.graph.bounds.size.height)/(yearDistance/self.graph.bounds.size.width);//yay! it works now!
         
         self.graph.delegate=self;
         [self.graph setupGestures];

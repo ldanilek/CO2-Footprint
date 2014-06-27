@@ -12,6 +12,12 @@
 #define FOOTPRINT_CHANGED_NOTIFICATION @"Note: the footprint has now changed. Store it now."
 //changing from Activities to Input categories
 
+//according to http://cdiac.ornl.gov/pns/convert.html
+//1ppm = 2.13 metric gigatons
+//1ppm = 2.348*10^9 short tons
+#define TON_PER_PPM 2.348e9
+#define PPM_PER_TON 1./TON_PER_PPM
+
 typedef enum {
     HomeHouse,
     HomeApartment,

@@ -246,7 +246,28 @@
 #define HUMAN_POPULATION 7170277060//june 3 2014 6:45pm
 
 - (double)yearlyFootprintExtrapolated {
-    return self.yearlyFootprint*HUMAN_POPULATION;
+    //first find the yearly emissions by non-americans
+    //check out the table on http://en.wikipedia.org/wiki/List_of_countries_by_carbon_dioxide_emissions
+    //world produces 31350455 thousand tonnes of CO2 annually = 3.456e10 short tons annually
+    //americans produce 4,433,057 thousand tonnes annually
+    //non-americans produce 2.967e7 short tons of CO2 annually
+    //world produces 29*.6
+    //shit, that doesn't work either
+    //now I'll work backwards
+    //according to http://www.wolframalpha.com/input/?i=carbon+dioxide+concentration, ppm is rising at 209 ppm/century = 2.09 ppm per year
+    //assume this entire rise is caused by humans
+    //find world tons per year
+#define PPM_PER_YEAR 2.09
+#define WORLD_TONS_PER_YEAR PPM_PER_YEAR * TON_PER_PPM
+    //americans account for 15.04% of CO2 emissions
+#define AMERICAN_TONS_PER_YEAR WORLD_TONS_PER_YEAR * 0.1504
+#define NON_AMERICANS WORLD_TONS_PER_YEAR-AMERICAN_TONS_PER_YEAR //tons per year
+#define AMERICAN_POPULATION 316148990
+    //raw emissions don't translate to effective emissions
+#define AMERICA_RAW_EMISSIONS 5.721e9
+    //scale an american's footprint down to be equal to AMERICAN_TONS_PER_YEAR
+#define AMERICAN_SCALE_FACTOR AMERICAN_TONS_PER_YEAR/AMERICA_RAW_EMISSIONS
+    return self.yearlyFootprint*AMERICAN_POPULATION*AMERICAN_SCALE_FACTOR + NON_AMERICANS;
 }
 
 + (CFValue *)newBill {

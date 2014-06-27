@@ -59,11 +59,11 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @[@"Output", @"Input"][section];
+    return @[@"Input", @"Output"][section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section) {//inputs
+    if (section==0) {//inputs
         return 3;
     } else {//outputs
         return 5;
@@ -73,7 +73,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     
-    if (indexPath.section) {//inputs
+    if (indexPath.section==0) {//inputs
         cell.textLabel.text=@[@"Home", @"Transportation", @"Diet"][indexPath.row];
         if (![self usePopovers]) cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     } else {
@@ -89,20 +89,29 @@
             cell.textLabel.text=[NSString stringWithFormat:@"Footprint: %g tons/year", footprint.valueInCurrentUnits];
         }
     }
+    //only for making screenshots
+    //cell.textLabel.text=@"";
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    return indexPath.row||indexPath.section;
+    return indexPath.row||indexPath.section==0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section) {
+    if (![self usePopovers])[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section==0) {
         [self editFromTableView:tableView indexPath:indexPath];
     } else {
         NSString *identifier = @"Explanation";
         if (indexPath.row==2) {
             identifier=@"Extrapolation";
+            if (self.brain.vehicleFuelEfficiency.value<.001) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid footprint" message:@"Vehicle Fuel Efficiency must be positive" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alert show];
+                return;
+            }
         } else if (indexPath.row==3) {
             identifier=@"Improvements";
         } else if (indexPath.row==4) {
@@ -114,7 +123,6 @@
             [self performSegueWithIdentifier:identifier sender:indexPath];
         }
     }
-    if (![self usePopovers])[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
